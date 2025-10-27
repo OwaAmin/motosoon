@@ -1,0 +1,587 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="موتوشاتل - فروشگاه آنلاین قطعات موتور، سیلندر و سرسیلندر خودروهای ایرانی. به زودی راه‌اندازی می‌شود." />
+  <meta name="theme-color" content="#FF7B00" />
+  <meta name="formspree-id" content="movpvyqq" />
+  <title>موتوشاتل | MotoShatel — به زودی</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root{
+      --black: #000000;
+      --dark: #333333;
+      --bg: #0f0f10;
+      --card: #161617;
+      --border: #2a2b2d;
+      --text: #f3f4f5;
+      --muted: #c9cacc;
+      --accent: #FF7B00;
+      --accent-700: #e56f00;
+      --shadow: 0 12px 32px rgba(0,0,0,.45);
+      --radius: 14px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body{
+      margin: 0;
+      font-family: "Vazirmatn", "Roboto", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+      color: var(--text);
+      background: radial-gradient(1200px 600px at 85% -10%, rgba(255,123,0,.12), transparent 60%), var(--bg);
+      line-height: 1.7;
+    }
+    img{ max-width: 100%; display: block; }
+    a{ color: inherit; text-decoration: none; }
+    .container{
+      width: min(1200px, 92%);
+      margin-inline: auto;
+    }
+    .visually-hidden{
+      position: absolute!important;
+      height: 1px; width: 1px;
+      overflow: hidden;
+      clip: rect(1px, 1px, 1px, 1px);
+      white-space: nowrap;
+    }
+
+    /* Header */
+    .site-header{
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(10,10,11,.64);
+      backdrop-filter: saturate(140%) blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-wrap{
+      display: flex; align-items: center; justify-content: space-between;
+      padding: .9rem 0;
+    }
+    .logo{
+      display: flex; align-items: center; gap: .75rem;
+    }
+    .logo-mark{
+      width: 40px; height: 40px; border-radius: 10px;
+      background:
+        radial-gradient(12px 12px at 70% 30%, rgba(255,255,255,.25), transparent 60%),
+        linear-gradient(135deg, var(--accent) 0%, #ff9a3d 100%);
+      box-shadow: inset 0 0 0 2px rgba(255,255,255,.06), 0 10px 18px rgba(255,123,0,.25);
+    }
+    .logo-text{ line-height: 1.05; display: grid; }
+    .brand-fa{ font-weight: 800; font-size: 1.15rem; letter-spacing: .3px; }
+    .brand-en{
+      font-family: "Roboto", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+      font-size: .8rem; color: var(--muted); margin-top: 1px; letter-spacing: .4px;
+    }
+
+    /* Nav */
+    .nav-links{ display: flex; align-items: center; gap: 1.2rem; }
+    .nav-links a{
+      color: var(--muted); font-weight: 500;
+      padding: .5rem .6rem; border-radius: 8px;
+      transition: color .2s ease, background-color .2s ease, transform .2s ease;
+    }
+    .nav-links a:hover{ color: var(--text); background: rgba(255,255,255,.04); transform: translateY(-1px); }
+    .menu-toggle{
+      display: none;
+      background: transparent; border: 1px solid var(--border);
+      color: var(--text); border-radius: 10px; padding: .5rem .7rem;
+    }
+
+    /* Hero */
+    .hero{
+      position: relative;
+      min-height: 92vh;
+      display: grid; align-content: center;
+      padding: 3.5rem 0 2.5rem;
+      isolation: isolate;
+    }
+    .hero::before{
+      content: "";
+      position: absolute; inset: 0; z-index: -2;
+      background: url('https://source.unsplash.com/1600x900/?engine,mechanical,car') center/cover no-repeat;
+      filter: grayscale(.35) contrast(1.15) brightness(.65);
+    }
+    .hero::after{
+      content: "";
+      position: absolute; inset: 0; z-index: -1;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.60) 0%, rgba(0,0,0,.65) 40%, rgba(0,0,0,.85) 100%);
+    }
+
+    .hero-inner{ display: grid; gap: 1.25rem; text-align: center; }
+    .hero h1{ font-weight: 800; font-size: clamp(1.4rem, 2.5vw + 1rem, 2.4rem); margin: 0; text-wrap: balance; }
+    .hero p.sub{ margin: .25rem 0 0; color: var(--muted); font-size: clamp(.98rem, .6vw + .8rem, 1.05rem); }
+
+    /* Countdown */
+    .countdown{
+      margin: 1.5rem auto 0;
+      display: grid; grid-template-columns: repeat(4, minmax(78px, 1fr)); gap: .6rem;
+      width: min(680px, 100%);
+    }
+    .cd-box{
+      background: rgba(22,22,23,.7);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: .9rem .5rem;
+      box-shadow: var(--shadow);
+      display: grid; place-items: center;
+      transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+    }
+    .cd-box:hover{ transform: translateY(-3px); border-color: rgba(255,123,0,.65); box-shadow: 0 14px 28px rgba(255,123,0,.15); }
+    .cd-num{
+      font-weight: 800; letter-spacing: .5px;
+      font-size: clamp(1.3rem, 3.1vw + .5rem, 2.2rem);
+      font-variant-numeric: tabular-nums;
+    }
+    .cd-label{ color: var(--muted); font-size: .85rem; margin-top: .1rem; }
+
+    /* Newsletter */
+    .newsletter{
+      margin: 1.5rem auto 0;
+      width: min(680px, 100%);
+      background: rgba(22,22,23,.7);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: .9rem;
+      display: grid; gap: .75rem;
+      box-shadow: var(--shadow);
+    }
+    .newsletter form{
+      display: grid; gap: .6rem;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+    }
+    .newsletter input[type="email"]{
+      appearance: none;
+      background: #0f0f11;
+      border: 1px solid var(--border);
+      color: var(--text);
+      border-radius: 12px;
+      padding: .9rem 1rem;
+      outline: none;
+      transition: border-color .2s ease, box-shadow .2s ease;
+    }
+    .newsletter input[type="email"]:focus{
+      border-color: rgba(255,123,0,.85);
+      box-shadow: 0 0 0 4px rgba(255,123,0,.18);
+    }
+    .btn{
+      background: linear-gradient(180deg, var(--accent) 0%, var(--accent-700) 100%);
+      color: #111; font-weight: 800;
+      border: none; border-radius: 12px;
+      padding: .95rem 1.1rem;
+      cursor: pointer;
+      min-width: 150px;
+      transition: transform .15s ease, filter .2s ease, box-shadow .2s ease;
+      box-shadow: 0 10px 20px rgba(255,123,0,.25), inset 0 -6px 12px rgba(0,0,0,.12);
+    }
+    .btn:hover{ transform: translateY(-2px); filter: saturate(1.05); }
+    .btn:active{ transform: translateY(0); }
+    .note{ color: var(--muted); font-size: .9rem; text-align: center; }
+
+    /* Products */
+    .products{ padding: 3rem 0 4rem; }
+    .section-title{ font-weight: 800; font-size: clamp(1.2rem, 1.2vw + 1rem, 1.6rem); text-align: center; margin-bottom: 1.3rem; }
+    .cards{ display: grid; gap: 1rem; grid-template-columns: 1fr; }
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0)) , var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.1rem;
+      display: grid; grid-template-columns: auto 1fr; gap: .9rem;
+      align-items: center;
+      transition: transform .2s ease, border-color .2s, box-shadow .2s ease;
+    }
+    .card:hover{ transform: translateY(-4px); border-color: rgba(255,123,0,.6); box-shadow: 0 18px 28px rgba(255,123,0,.18); }
+    .card-icon{
+      width: 62px; height: 62px; border-radius: 14px;
+      background: rgba(255,123,0,.1);
+      border: 1px dashed rgba(255,123,0,.35);
+      display: grid; place-items: center;
+    }
+    .card h3{ margin: 0; font-size: 1.05rem; }
+    .card p{ margin: .25rem 0 0; color: var(--muted); }
+
+    /* Footer */
+    .site-footer{ border-top: 1px solid var(--border); background: #0b0b0c; padding: 2.2rem 0 1.2rem; }
+    .footer-grid{ display: grid; gap: 1.2rem; grid-template-columns: 1fr; }
+    address{ font-style: normal; color: var(--muted); }
+    .contact-item{ display: grid; grid-template-columns: 22px 1fr; gap: .6rem; align-items: start; margin: .35rem 0; }
+    .social{ display: flex; align-items: center; gap: .6rem; margin-top: .3rem; }
+    .social a{
+      width: 42px; height: 42px; border-radius: 12px;
+      display: grid; place-items: center;
+      border: 1px solid var(--border);
+      background: #121213;
+      transition: transform .15s ease, border-color .2s ease, box-shadow .2s ease;
+    }
+    .social a:hover{ transform: translateY(-2px) scale(1.02); border-color: rgba(255,123,0,.6); box-shadow: 0 10px 18px rgba(255,123,0,.15); }
+    .copy{ margin-top: 1.2rem; padding-top: 1rem; border-top: 1px solid var(--border); color: var(--muted); text-align: center; font-size: .95rem; }
+
+    /* Responsive */
+    @media (max-width: 860px){
+      .menu-toggle{ display: inline-grid; place-items: center; }
+      .nav-links{
+        position: absolute; right: 0; top: 62px;
+        background: rgba(12,12,13,.98);
+        border: 1px solid var(--border);
+        border-right: none;
+        display: grid; gap: .2rem;
+        padding: .6rem; width: min(240px, 70vw);
+        transform-origin: top right;
+        transform: scale(.98);
+        opacity: 0; visibility: hidden;
+        border-radius: 0 0 12px 12px;
+      }
+      .nav-links.open{ opacity: 1; visibility: visible; transform: scale(1); }
+      .nav-links a{ padding: .7rem .8rem; border-radius: 8px; }
+    }
+    @media (min-width: 680px){
+      .cards{ grid-template-columns: repeat(3, 1fr); }
+      .footer-grid{ grid-template-columns: 1.4fr 1fr; align-items: start; }
+      .hero-inner{ text-align: center; }
+    }
+    @media (prefers-reduced-motion: reduce){
+      *{ transition: none !important; scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+  <a class="visually-hidden" href="#home">پرش به محتوای اصلی</a>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container nav-wrap" role="navigation" aria-label="ناوبری اصلی">
+      <a href="#home" class="logo" aria-label="موتوشاتل MotoShatel - خانه">
+        <span class="logo-mark" aria-hidden="true"></span>
+        <span class="logo-text">
+          <span class="brand-fa">موتوشاتل</span>
+          <span class="brand-en">MotoShatel</span>
+        </span>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="primaryNav">منو</button>
+
+      <nav id="primaryNav" class="nav-links" aria-label="پیوندها">
+        <a href="#home">خانه</a>
+        <a href="#products">درباره ما</a>
+        <a href="#contact">تماس با ما</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main id="home" class="hero" role="main" aria-label="بخش اصلی">
+    <div class="container hero-inner">
+      <h1>موتوشاتل - بزرگترین فروشگاه آنلاین قطعات خودرو به زودی افتتاح می شود</h1>
+      <p class="sub">قطعات اصلی و با کیفیت برای خودروهای ایرانی</p>
+
+      <div class="countdown" aria-live="polite" aria-label="شمارش معکوس تا راه‌اندازی">
+        <div class="cd-box" aria-label="روز">
+          <div class="cd-num" id="cd-days">00</div>
+          <div class="cd-label">روز</div>
+        </div>
+        <div class="cd-box" aria-label="ساعت">
+          <div class="cd-num" id="cd-hours">00</div>
+          <div class="cd-label">ساعت</div>
+        </div>
+        <div class="cd-box" aria-label="دقیقه">
+          <div class="cd-num" id="cd-mins">00</div>
+          <div class="cd-label">دقیقه</div>
+        </div>
+        <div class="cd-box" aria-label="ثانیه">
+          <div class="cd-num" id="cd-secs">00</div>
+          <div class="cd-label">ثانیه</div>
+        </div>
+      </div>
+
+      <section class="newsletter" aria-label="فرم عضویت خبرنامه">
+        <form id="notifyForm" action="https://formspree.io/f/movpvyqq" method="POST" accept-charset="UTF-8">
+          <label class="visually-hidden" for="email">ایمیل شما</label>
+          <input id="email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="ایمیل شما" required />
+          <button class="btn" type="submit" aria-label="ثبت ایمیل برای اطلاع‌رسانی">مرا با خبر کن</button>
+
+          <!-- Metadata -->
+          <input type="hidden" name="form_name" value="MotoShatel Notify" />
+          <input type="hidden" name="source" value="Coming Soon Page" />
+          <input type="hidden" name="lang" value="fa" />
+          <input type="hidden" name="brand" value="MotoShatel" />
+          <input type="hidden" name="subject" value="عضویت جدید خبرنامه موتوشاتل" />
+          <input type="hidden" name="page_url" value="" />
+          <input type="hidden" name="timestamp" value="" />
+
+          <!-- Redirect to Thank You page -->
+          <input type="hidden" name="_redirect" value="thank-you.html" />
+
+          <!-- Honeypot for Formspree -->
+          <input type="text" name="_gotcha" class="visually-hidden" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        </form>
+        <div id="formMessage" class="note" role="status" aria-live="polite"></div>
+        <p class="note">با ثبت ایمیل، اولین نفری خواهید بود که از افتتاح فروشگاه و تخفیف‌های شروع کار مطلع می‌شود.</p>
+      </section>
+    </div>
+  </main>
+
+  <!-- Products Preview -->
+  <section id="products" class="products" aria-label="محصولات پیش‌نمایش">
+    <div class="container">
+      <h2 class="section-title">محصولات ما</h2>
+      <div class="cards">
+        <!-- Engine Parts -->
+        <article class="card">
+          <div class="card-icon" aria-hidden="true">
+            <!-- Inline SVG: Gear/engine -->
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 8a4 4 0 100 8 4 4 0 000-8z" stroke="#FF7B00" stroke-width="1.6"/>
+              <path d="M3 13l2 .5a7 7 0 001 1.9l-1.2 1.8 1.6 1.6 1.8-1.2c.6.43 1.23.77 1.92 1l.5 2h2l.5-2c.69-.23 1.32-.57 1.92-1l1.8 1.2 1.6-1.6-1.2-1.8c.43-.6.77-1.23 1-1.92l2-.5v-2l-2-.5a7 7 0 00-1-1.92l1.2-1.8-1.6-1.6-1.8 1.2a7 7 0 00-1.92-1L13 3h-2l-.5 2c-.69.23-1.32.57-1.92 1L6.78 4.78 5.17 6.4 6.4 8.2c-.43.6-.77 1.23-1 1.92L3 10.5V13z" stroke="#FF7B00" stroke-width="1.3" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div>
+            <h3>قطعات موتور</h3>
+            <p>انتخابی از قطعات اصلی برای افزایش کارایی و دوام موتور خودروهای ایرانی.</p>
+          </div>
+        </article>
+
+        <!-- Cylinders -->
+        <article class="card">
+          <div class="card-icon" aria-hidden="true">
+            <!-- Inline SVG: Cylinder -->
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <rect x="5" y="4" width="14" height="6" rx="2" stroke="#FF7B00" stroke-width="1.6"/>
+              <rect x="5" y="10" width="14" height="10" rx="2" stroke="#FF7B00" stroke-width="1.6"/>
+              <path d="M7 7h10" stroke="#FF7B00" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <h3>سیلندر</h3>
+            <p>سیلندرهای دقیق و استاندارد برای عملکرد روان و فشرده‌سازی ایده‌آل.</p>
+          </div>
+        </article>
+
+        <!-- Cylinder Heads -->
+        <article class="card">
+          <div class="card-icon" aria-hidden="true">
+            <!-- Inline SVG: Cylinder Head -->
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <rect x="3" y="6" width="18" height="8" rx="2" stroke="#FF7B00" stroke-width="1.6"/>
+              <circle cx="8" cy="10" r="1.5" stroke="#FF7B00" stroke-width="1.3"/>
+              <circle cx="12" cy="10" r="1.5" stroke="#FF7B00" stroke-width="1.3"/>
+              <circle cx="16" cy="10" r="1.5" stroke="#FF7B00" stroke-width="1.3"/>
+              <path d="M5 14v3a2 2 0 002 2h10a2 2 0 002-2v-3" stroke="#FF7B00" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <h3>سرسیلندر</h3>
+            <p>سرسیلندرهای مقاوم با کیفیت ساخت بالا برای احتراق دقیق و دوام بیشتر.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact" class="site-footer" aria-label="پاورقی">
+    <div class="container footer-grid">
+      <div>
+        <div class="logo" style="margin-bottom:.6rem">
+          <span class="logo-mark" aria-hidden="true"></span>
+          <span class="logo-text">
+            <span class="brand-fa">موتوشاتل</span>
+            <span class="brand-en">MotoShatel</span>
+          </span>
+        </div>
+        <address>
+          <div class="contact-item">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="#FF7B00" stroke-width="1.5"/><circle cx="12" cy="9" r="2.5" stroke="#FF7B00" stroke-width="1.5"/></svg>
+            <span>کرج، انتهای مهرشهر، کیانمهر</span>
+          </div>
+          <div class="contact-item">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M22 16.92v2a2 2 0 01-2.18 2A19.8 19.8 0 013 5.18 2 2 0 015 3h2a2 2 0 012 1.72c.12.9.32 1.77.6 2.6a2 2 0 01-.45 2.11L8 10a16 16 0 006 6l.57-.75a2 2 0 012.11-.45c.83.28 1.7.48 2.6.6A2 2 0 0122 16.92z" stroke="#FF7B00" stroke-width="1.5"/></svg>
+            <span>09128625637</span>
+          </div>
+          <div class="contact-item">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 4h16v16H4z" stroke="#FF7B00" stroke-width="1.5"/><path d="M4 7l8 6 8-6" stroke="#FF7B00" stroke-width="1.5"/></svg>
+            <span>info@motoshatel.com</span>
+          </div>
+        </address>
+      </div>
+
+      <div>
+        <h3 style="margin:0 0 .6rem 0; font-size:1rem;">ما را در شبکه‌های اجتماعی دنبال کنید</h3>
+        <div class="social" aria-label="شبکه‌های اجتماعی">
+          <a href="https://www.instagram.com/motoshatel" target="_blank" aria-label="اینستاگرام موتوشاتل">
+            <!-- Instagram -->
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="5" stroke="#FF7B00" stroke-width="1.5"/>
+              <circle cx="12" cy="12" r="3.5" stroke="#FF7B00" stroke-width="1.5"/>
+              <circle cx="17.5" cy="6.5" r="1" fill="#FF7B00"/>
+            </svg>
+          </a>
+          <a href="https://t.me/motoshatel" target="_blank" aria-label="تلگرام موتوشاتل">
+            <!-- Telegram -->
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M21.5 3.5L2.5 11.5l6.3 2 .7 6.3 3.1-4.1 5.7 4.1 3.2-16.3z" stroke="#FF7B00" stroke-width="1.5" fill="none"/>
+            </svg>
+          </a>
+          <a href="#" aria-label="واتس‌اپ موتوشاتل">
+            <!-- WhatsApp -->
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M20 12a8 8 0 10-15.46 3.54L4 21l5.6-1.47A8 8 0 0020 12z" stroke="#FF7B00" stroke-width="1.5" fill="none"/>
+              <path d="M8.5 9.8c.4-1 1-1 1.4-1 .2 0 .5 0 .8.6.3.6.8 1.9.8 1.9s-.2.5-.4.7c-.3.3-.6.6 0 1.3.6.7 1.4 1.4 2.2 1.6.8.1.9-.2 1.2-.5.3-.2.7-.1.7-.1s1.2.5 1.8.8c.5.2.6.5.6.8 0 .4-.2 1.1-1.2 1.5-1 .4-2.6.2-4.4-1-2.3-1.6-3.5-3.6-3.9-4.6-.4-1.2-.2-2 .2-2.5z" fill="#FF7B00"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="container copy">موتوشاتل © 2024</div>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    (function(){
+      const toggle = document.getElementById('menuToggle');
+      const nav = document.getElementById('primaryNav');
+      if(!toggle || !nav) return;
+
+      const close = () => { nav.classList.remove('open'); toggle.setAttribute('aria-expanded','false'); }
+      const open = () => { nav.classList.add('open'); toggle.setAttribute('aria-expanded','true'); }
+
+      toggle.addEventListener('click', () => {
+        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+        expanded ? close() : open();
+      });
+      nav.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+      document.addEventListener('click', (e) => {
+        if(!nav.contains(e.target) && e.target !== toggle) close();
+      });
+    })();
+
+    // Countdown (set to a future launch date)
+    (function(){
+      // Launch Date — Nowruz 2026 in Tehran time (approx.)
+      const launch = new Date('2025-11-22T09:00:00+03:30').getTime();
+      const $d = document.getElementById('cd-days');
+      const $h = document.getElementById('cd-hours');
+      const $m = document.getElementById('cd-mins');
+      const $s = document.getElementById('cd-secs');
+
+      const pad = (n) => String(n).padStart(2,'0');
+
+      function update(){
+        const now = Date.now();
+        let diff = Math.max(0, launch - now);
+
+        const days = Math.floor(diff / (1000*60*60*24));
+        diff -= days * (1000*60*60*24);
+
+        const hours = Math.floor(diff / (1000*60*60));
+        diff -= hours * (1000*60*60);
+
+        const mins = Math.floor(diff / (1000*60));
+        diff -= mins * (1000*60);
+
+        const secs = Math.floor(diff / 1000);
+
+        $d.textContent = pad(days);
+        $h.textContent = pad(hours);
+        $m.textContent = pad(mins);
+        $s.textContent = pad(secs);
+
+        if ((launch - now) <= 0) {
+          document.title = 'موتوشاتل — به زودی فعال می‌شود';
+          clearInterval(timer);
+        }
+      }
+
+      update();
+      const timer = setInterval(update, 1000);
+    })();
+
+    // Email notify form -> Formspree with Thank You redirect
+    (function(){
+      const form = document.getElementById('notifyForm');
+      const input = document.getElementById('email');
+      const msg = document.getElementById('formMessage');
+      if(!form || !input || !msg) return;
+
+      // Ensure endpoint is correct (from meta or fallback)
+      const idMeta = document.querySelector('meta[name="formspree-id"]');
+      const formId = idMeta ? idMeta.content.trim() : 'movpvyqq';
+      const endpoint = `https://formspree.io/f/${formId}`;
+      form.action = endpoint;
+
+      const setMessage = (text, ok) => {
+        msg.textContent = text;
+        msg.style.color = ok ? '#8DFFB0' : '#ffb3a6';
+      };
+      const emailOk = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+
+      const btn = form.querySelector('button[type="submit"]');
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        // Honeypot check
+        const hp = form.querySelector('input[name="_gotcha"]');
+        if (hp && hp.value) {
+          setMessage('ارسال انجام شد.', true);
+          form.reset();
+          return;
+        }
+
+        // Validate email
+        const value = input.value.trim();
+        if(!emailOk(value)){
+          setMessage('لطفاً یک ایمیل معتبر وارد کنید.', false);
+          input.focus();
+          return;
+        }
+
+        // Fill dynamic metadata
+        const pageUrl = form.querySelector('input[name="page_url"]');
+        const timestamp = form.querySelector('input[name="timestamp"]');
+        if (pageUrl) pageUrl.value = location.href;
+        if (timestamp) timestamp.value = new Date().toISOString();
+
+        // Redirect target
+        const redirectField = form.querySelector('input[name="_redirect"]');
+        const redirectUrl = redirectField ? redirectField.value : 'thank-you.html';
+
+        // Submit
+        btn.disabled = true; btn.setAttribute('aria-busy','true');
+        const originalText = btn.textContent; btn.textContent = 'در حال ارسال...';
+
+        try {
+          const formData = new FormData(form);
+          const res = await fetch(endpoint, {
+            method: 'POST',
+            headers: { 'Accept': 'application/json' },
+            body: formData
+          });
+
+          if (res.ok) {
+            window.location.assign(redirectUrl);
+            return;
+          } else {
+            const data = await res.json().catch(() => ({}));
+            const err = data && data.errors && data.errors.length
+              ? data.errors.map(e => e.message).join('، ')
+              : 'مشکلی در ارسال رخ داد. لطفاً کمی بعد دوباره تلاش کنید.';
+            setMessage(err, false);
+          }
+        } catch (err) {
+          setMessage('اتصال برقرار نشد. اینترنت خود را بررسی کنید و دوباره تلاش کنید.', false);
+        } finally {
+          btn.disabled = false; btn.removeAttribute('aria-busy'); btn.textContent = originalText;
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

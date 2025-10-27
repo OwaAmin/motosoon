@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#FF7B00" />
+  <title>تشکر از شما | موتوشاتل</title>
+  <meta http-equiv="refresh" content="6; url=index.html">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root{
+      --bg: #0f0f10; --card: #161617; --border: #2a2b2d;
+      --text: #f3f4f5; --muted: #c9cacc;
+      --accent: #FF7B00; --accent-700: #e56f00;
+      --shadow: 0 12px 32px rgba(0,0,0,.45);
+    }
+    *{ box-sizing: border-box; }
+    html{ scroll-behavior: smooth; }
+    body{
+      margin:0; min-height:100vh; display:grid; place-items:center;
+      font-family: "Vazirmatn", "Roboto", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(1200px 600px at 85% -10%, rgba(255,123,0,.12), transparent 60%),
+        url('https://source.unsplash.com/1600x900/?engine,mechanical,metal') center/cover no-repeat fixed,
+        var(--bg);
+    }
+    .wrap{
+      width:min(720px, 92%);
+      background: rgba(22,22,23,.72);
+      border:1px solid var(--border);
+      border-radius:18px; padding:2rem 1.4rem; text-align:center;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(6px) saturate(140%);
+    }
+    .logo{ display:flex; gap:.6rem; justify-content:center; align-items:center; margin-bottom:.6rem; }
+    .logo-mark{
+      width:40px; height:40px; border-radius:10px;
+      background:
+        radial-gradient(12px 12px at 70% 30%, rgba(255,255,255,.25), transparent 60%),
+        linear-gradient(135deg, var(--accent) 0%, #ff9a3d 100%);
+      box-shadow: inset 0 0 0 2px rgba(255,255,255,.06), 0 10px 18px rgba(255,123,0,.25);
+    }
+    .brand-fa{ font-weight:800; font-size:1.2rem; }
+    .brand-en{ font-family:"Roboto"; font-size:.85rem; color:var(--muted); }
+    .icon{
+      width:86px; height:86px; border-radius:22px; margin: .4rem auto 1rem;
+      display:grid; place-items:center; background: rgba(255,123,0,.1); border: 1px dashed rgba(255,123,0,.35);
+    }
+    h1{ margin:.2rem 0 .4rem; font-size:clamp(1.4rem, 1.5vw + 1rem, 2rem); font-weight:800; }
+    p{ margin:.4rem 0; color:var(--muted); }
+    .btn{
+      margin-top:1rem;
+      background: linear-gradient(180deg, var(--accent) 0%, var(--accent-700) 100%);
+      color:#111; font-weight:800; border:none; border-radius:12px;
+      padding:.95rem 1.1rem; cursor:pointer; min-width:190px;
+      box-shadow: 0 10px 20px rgba(255,123,0,.25), inset 0 -6px 12px rgba(0,0,0,.12);
+      transition: transform .15s ease, filter .2s ease, box-shadow .2s ease;
+    }
+    .btn:hover{ transform: translateY(-2px); filter:saturate(1.05); }
+    .small{ font-size:.92rem; color:var(--muted); margin-top:.6rem; }
+  </style>
+</head>
+<body>
+  <main class="wrap" aria-label="صفحه تشکر">
+    <div class="logo">
+      <span class="logo-mark" aria-hidden="true"></span>
+      <div>
+        <div class="brand-fa">موتوشاتل</div>
+        <div class="brand-en">MotoShatel</div>
+      </div>
+    </div>
+
+    <div class="icon" aria-hidden="true">
+      <!-- Check icon -->
+      <svg width="44" height="44" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="12" cy="12" r="10" stroke="#FF7B00" stroke-width="1.6"/>
+        <path d="M7 12.5l3.2 3.2L17 8.9" stroke="#FF7B00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+
+    <h1>با تشکر! ایمیل شما ثبت شد</h1>
+    <p>به محض راه‌اندازی موتوشاتل، خبر شروع و تخفیف‌های ویژه افتتاح را برایتان ارسال می‌کنیم.</p>
+    <p>اگر اشتباهی رخ داده، می‌توانید دوباره در صفحه اصلی ایمیل خود را ثبت کنید.</p>
+
+    <a class="btn" href="index.html" aria-label="بازگشت به صفحه اصلی">بازگشت به صفحه اصلی</a>
+    <div class="small" aria-live="polite">هدایت خودکار تا چند ثانیه دیگر انجام می‌شود…</div>
+  </main>
+</body>
+</html>
