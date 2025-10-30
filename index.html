@@ -2,26 +2,22 @@
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    
-    <!-- SEO Meta Tags -->
-    <title>موتوشاتل | فروشگاه قطعات خودرو - به زودی</title>
-    <meta name="description" content="موتوشاتل - فروشگاه تخصصی قطعات موتور، سیلندر و سرسیلندر خودرو. به زودی آماده خدمت‌رسانی به شما">
-    <meta name="keywords" content="موتوشاتل، قطعات موتور، سیلندر، سرسیلندر، قطعات خودرو، موتور کامل">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="description" content="موتوشاتل - فروشگاه تخصصی قطعات خودرو، موتور کامل، سیلندر و سرسیلندر. به زودی راه‌اندازی می‌شود.">
+    <meta name="keywords" content="موتوشاتل, قطعات خودرو, موتور کامل, سیلندر, سرسیلندر, لوازم یدکی خودرو">
     <meta name="author" content="MotoShatel">
     <meta name="robots" content="index, follow">
-    
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="موتوشاتل | فروشگاه قطعات موتور خودرو">
-    <meta property="og:description" content="تخصصی‌ترین فروشگاه قطعات موتور - به زودی">
+    <meta property="og:title" content="موتوشاتل - به زودی">
+    <meta property="og:description" content="فروشگاه تخصصی قطعات خودرو - موتور کامل، سیلندر و سرسیلندر">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://motoshatel.com">
     
     <!-- Security Headers -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' https:">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    
+    <title>موتوشاتل | MotoShatel - به زودی راه‌اندازی می‌شود</title>
     
     <!-- Preconnect for Performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,503 +25,812 @@
     <link rel="preconnect" href="https://submit-form.com">
     
     <!-- Persian Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    <!-- Leaflet CSS (نقشه رایگان) -->
+    <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>⚙️</text></svg>">
-    
     <style>
-        /* ============================================
-           CSS RESET & BASE STYLES
-        ============================================ */
+        :root {
+            --primary-orange: #ff6b35;
+            --primary-blue: #00d4ff;
+            --dark-bg: #0a0a0a;
+            --dark-secondary: #1a1a1a;
+            --metallic-silver: #c0c0c0;
+            --metallic-gold: #d4af37;
+            --text-light: #e0e0e0;
+            --glow-orange: rgba(255, 107, 53, 0.6);
+            --glow-blue: rgba(0, 212, 255, 0.6);
+            --success-green: #00ff88;
+            --error-red: #ff3838;
+            --warning-yellow: #ffb800;
+        }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+        
+        html {
+            overflow-x: hidden;
+            width: 100%;
+        }
+        
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-light);
+            overflow-x: hidden;
+            direction: rtl;
+            min-height: 100vh;
+            position: relative;
+            user-select: none;
             -webkit-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
-            user-select: none;
+            width: 100%;
+            max-width: 100vw;
         }
-
-        :root {
-            /* Neon Color Palette */
-            --neon-orange: #ff6b35;
-            --neon-blue: #00d4ff;
-            --neon-cyan: #0ff;
-            --dark-bg: #0a0a0f;
-            --dark-secondary: #161620;
-            --metallic-silver: #c0c0c0;
-            --metallic-dark: #1a1a24;
-            
-            /* Typography */
-            --font-primary: 'Vazirmatn', sans-serif;
+        
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255, 107, 53, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+                linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 100%);
         }
-
-        body {
-            font-family: var(--font-primary);
-            background: var(--dark-bg);
-            color: #fff;
-            overflow-x: hidden;
-            line-height: 1.6;
-            direction: rtl;
-            position: relative;
+        
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background-image: 
+                repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(255, 107, 53, 0.03) 2px, rgba(255, 107, 53, 0.03) 4px),
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 212, 255, 0.03) 2px, rgba(0, 212, 255, 0.03) 4px);
+            animation: gridMove 20s linear infinite;
         }
-
-        /* ============================================
-           ANIMATED BACKGROUND
-        ============================================ */
-        .background-container {
+        
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+        
+        /* Particle System */
+        .particles {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: 1;
-            overflow: hidden;
+            pointer-events: none;
         }
-
-        .background-gradient {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(ellipse at 20% 30%, rgba(255, 107, 53, 0.15) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 70%, rgba(0, 212, 255, 0.15) 0%, transparent 50%),
-                linear-gradient(180deg, #0a0a0f 0%, #161620 50%, #0a0a0f 100%);
-        }
-
-        .particles {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-        }
-
+        
         .particle {
             position: absolute;
-            background: rgba(192, 192, 192, 0.1);
+            width: 2px;
+            height: 2px;
+            background: var(--primary-blue);
             border-radius: 50%;
-            animation: float linear infinite;
+            opacity: 0;
+            animation: particleFloat 6s infinite;
         }
-
-        @keyframes float {
+        
+        @keyframes particleFloat {
             0% {
-                transform: translateY(100vh) rotate(0deg);
+                transform: translateY(100vh) translateX(0);
                 opacity: 0;
             }
             10% {
-                opacity: 0.3;
+                opacity: 1;
             }
             90% {
-                opacity: 0.3;
+                opacity: 1;
             }
             100% {
-                transform: translateY(-100px) rotate(360deg);
+                transform: translateY(-100vh) translateX(100px);
                 opacity: 0;
             }
         }
-
-        .grid-overlay {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: gridMove 20s linear infinite;
-        }
-
-        @keyframes gridMove {
-            0% {
-                transform: translateY(0);
-            }
-            100% {
-                transform: translateY(50px);
-            }
-        }
-
-        /* ============================================
-           MAIN CONTENT CONTAINER
-        ============================================ */
-        .main-container {
+        
+        /* Main Container */
+        .container {
             position: relative;
-            z-index: 10;
+            z-index: 2;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+            width: 100%;
+            max-width: 100%;
         }
-
-        /* ============================================
-           DISCOUNT BANNER
-        ============================================ */
-        .discount-banner {
-            background: linear-gradient(135deg, var(--neon-orange), var(--neon-blue));
-            padding: 1rem 2rem;
+        
+        /* Logo Section */
+        .logo-section {
+            margin-bottom: 2rem;
             text-align: center;
+            width: 100%;
+        }
+        
+        .logo {
+            font-size: clamp(2rem, 8vw, 4rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary-orange) 0%, var(--primary-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px var(--glow-orange);
+            animation: logoGlow 3s ease-in-out infinite;
+            letter-spacing: 2px;
+            word-break: keep-all;
+        }
+        
+        @keyframes logoGlow {
+            0%, 100% {
+                filter: drop-shadow(0 0 20px var(--glow-orange));
+            }
+            50% {
+                filter: drop-shadow(0 0 40px var(--glow-blue));
+            }
+        }
+        
+        .logo-subtitle {
+            font-size: clamp(0.8rem, 3vw, 1.2rem);
+            color: var(--metallic-silver);
+            margin-top: 0.5rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+        
+        /* Engine Visual Element */
+        .engine-container {
+            position: relative;
+            width: clamp(200px, 80vw, 300px);
+            height: clamp(200px, 80vw, 300px);
+            margin: 1rem 0;
+        }
+        
+        .engine-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70%;
+            height: 70%;
+            background: radial-gradient(circle, var(--glow-orange) 0%, transparent 70%);
+            animation: enginePulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes enginePulse {
+            0%, 100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.5;
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.2);
+                opacity: 0.8;
+            }
+        }
+        
+        .engine-core {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50%;
+            height: 50%;
+            border: 3px solid var(--primary-orange);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(26, 26, 26, 0.8);
+            backdrop-filter: blur(10px);
+            box-shadow: 
+                0 0 30px var(--glow-orange),
+                inset 0 0 30px rgba(255, 107, 53, 0.2);
+            animation: coreRotate 10s linear infinite;
+        }
+        
+        @keyframes coreRotate {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        
+        .engine-icon {
+            font-size: clamp(2rem, 6vw, 4rem);
+            color: var(--primary-orange);
+            filter: drop-shadow(0 0 10px var(--glow-orange));
+        }
+        
+        /* Coming Soon Text */
+        .coming-soon {
+            text-align: center;
+            margin: 1rem 0;
+            width: 100%;
+            padding: 0 1rem;
+        }
+        
+        .coming-soon h1 {
+            font-size: clamp(1.5rem, 6vw, 3.5rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff 0%, var(--metallic-silver) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: textShine 3s ease-in-out infinite;
+            word-break: keep-all;
+        }
+        
+        @keyframes textShine {
+            0%, 100% {
+                filter: brightness(1);
+            }
+            50% {
+                filter: brightness(1.5);
+            }
+        }
+        
+        .coming-soon p {
+            font-size: clamp(0.9rem, 4vw, 1.3rem);
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+            font-weight: 300;
+        }
+        
+        .tagline {
+            font-size: clamp(0.85rem, 3.5vw, 1.1rem);
+            color: var(--primary-blue);
+            font-weight: 500;
+            margin-top: 1rem;
+        }
+        
+        /* Countdown Timer */
+        .countdown {
+            display: flex;
+            gap: 0.5rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 100%;
+            padding: 0 0.5rem;
+        }
+        
+        .countdown-item {
+            background: rgba(26, 26, 26, 0.6);
+            border: 2px solid var(--primary-orange);
+            border-radius: 15px;
+            padding: clamp(0.8rem, 3vw, 1.5rem) clamp(1rem, 4vw, 2rem);
+            min-width: clamp(70px, 20vw, 100px);
+            text-align: center;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 20px rgba(255, 107, 53, 0.3);
+            transition: all 0.3s ease;
+            flex: 1;
+            max-width: 120px;
+        }
+        
+        .countdown-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 30px var(--glow-orange);
+            border-color: var(--primary-blue);
+        }
+        
+        .countdown-number {
+            font-size: clamp(1.5rem, 6vw, 2.5rem);
+            font-weight: 700;
+            color: var(--primary-orange);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .countdown-label {
+            font-size: clamp(0.7rem, 2.5vw, 0.9rem);
+            color: var(--metallic-silver);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Features Section */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+            max-width: 1200px;
+            width: 100%;
+            padding: 0 1rem;
+        }
+        
+        .feature-card {
+            background: rgba(26, 26, 26, 0.6);
+            border: 1px solid rgba(255, 107, 53, 0.3);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            animation: slideDown 0.8s ease-out;
         }
-
-        @keyframes slideDown {
-            from {
-                transform: translateY(-100%);
-            }
-            to {
-                transform: translateY(0);
-            }
-        }
-
-        .discount-banner::before {
+        
+        .feature-card::before {
             content: '';
             position: absolute;
             top: -50%;
             left: -50%;
             width: 200%;
             height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
-            animation: shine 3s infinite;
+            background: linear-gradient(45deg, transparent, rgba(255, 107, 53, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.5s ease;
         }
-
-        @keyframes shine {
-            0% {
-                transform: translateX(-100%) translateY(-100%) rotate(45deg);
-            }
-            100% {
-                transform: translateX(100%) translateY(100%) rotate(45deg);
-            }
+        
+        .feature-card:hover::before {
+            left: 100%;
         }
-
-        .discount-content {
-            position: relative;
-            z-index: 1;
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-orange);
+            box-shadow: 0 10px 40px rgba(255, 107, 53, 0.4);
         }
-
-        .discount-title {
-            font-size: 1.3rem;
-            font-weight: 900;
-            margin-bottom: 0.3rem;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-        }
-
-        .discount-subtitle {
-            font-size: 0.9rem;
-            opacity: 0.95;
-        }
-
-        /* ============================================
-           HEADER/LOGO SECTION
-        ============================================ */
-        .header {
-            padding: 2rem;
-            text-align: center;
-            animation: fadeInDown 1s ease-out;
-        }
-
-        .logo-container {
-            display: inline-block;
-            position: relative;
-        }
-
-        .logo {
-            font-size: 3.5rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, var(--neon-orange) 0%, var(--neon-blue) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            position: relative;
-            text-shadow: 0 0 30px rgba(255, 107, 53, 0.5);
-            animation: glow 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes glow {
-            from {
-                filter: drop-shadow(0 0 10px var(--neon-orange)) 
-                        drop-shadow(0 0 20px var(--neon-orange));
-            }
-            to {
-                filter: drop-shadow(0 0 20px var(--neon-blue)) 
-                        drop-shadow(0 0 30px var(--neon-blue));
-            }
-        }
-
-        .logo-subtitle {
-            font-size: 0.9rem;
-            color: var(--metallic-silver);
-            margin-top: 0.5rem;
-            letter-spacing: 2px;
-            font-weight: 300;
-        }
-
-        /* ============================================
-           HERO SECTION
-        ============================================ */
-        .hero-section {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 2rem;
-            text-align: center;
-        }
-
-        .engine-icon {
-            font-size: 8rem;
-            margin-bottom: 2rem;
-            position: relative;
-            animation: rotateEngine 10s linear infinite, fadeIn 1.5s ease-out;
-        }
-
-        @keyframes rotateEngine {
-            0%, 100% {
-                transform: rotate(0deg) scale(1);
-            }
-            25% {
-                transform: rotate(5deg) scale(1.05);
-            }
-            75% {
-                transform: rotate(-5deg) scale(1.05);
-            }
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: scale(0.8);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        .coming-soon {
-            font-size: 4rem;
-            font-weight: 900;
-            margin-bottom: 1.5rem;
-            position: relative;
-            animation: fadeInUp 1s ease-out 0.3s both;
-        }
-
-        .coming-soon-primary {
-            background: linear-gradient(90deg, 
-                var(--neon-orange) 0%, 
-                var(--neon-blue) 50%, 
-                var(--neon-orange) 100%);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: shimmer 3s linear infinite, fadeInUp 1s ease-out 0.3s both;
-        }
-
-        @keyframes shimmer {
-            0% {
-                background-position: 0% center;
-            }
-            100% {
-                background-position: 200% center;
-            }
-        }
-
-        .tagline {
-            font-size: 1.5rem;
-            color: var(--metallic-silver);
+        
+        .feature-icon {
+            font-size: clamp(2rem, 8vw, 3rem);
             margin-bottom: 1rem;
-            font-weight: 300;
-            animation: fadeInUp 1s ease-out 0.5s both;
+            color: var(--primary-blue);
+            filter: drop-shadow(0 0 10px var(--glow-blue));
         }
-
-        .description {
-            font-size: 1.1rem;
-            color: rgba(255, 255, 255, 0.7);
-            max-width: 600px;
-            margin: 0 auto 3rem;
-            line-height: 1.8;
-            animation: fadeInUp 1s ease-out 0.7s both;
+        
+        .feature-title {
+            font-size: clamp(1rem, 4vw, 1.3rem);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--primary-orange);
         }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        
+        .feature-desc {
+            font-size: clamp(0.85rem, 3vw, 0.95rem);
+            color: var(--text-light);
+            line-height: 1.6;
         }
-
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* ============================================
-           COUNTDOWN TIMER
-        ============================================ */
-        .countdown-container {
-            display: flex;
-            gap: 2rem;
-            justify-content: center;
-            margin-bottom: 3rem;
-            animation: fadeInUp 1s ease-out 0.9s both;
-            flex-wrap: wrap;
-        }
-
-        .countdown-item {
-            position: relative;
-            padding: 1.5rem 2rem;
-            background: rgba(26, 26, 36, 0.6);
-            border: 2px solid rgba(0, 212, 255, 0.3);
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            min-width: 100px;
-            transition: all 0.3s ease;
-        }
-
-        .countdown-item:hover {
-            transform: translateY(-5px);
-            border-color: var(--neon-blue);
-            box-shadow: 
-                0 5px 30px rgba(0, 212, 255, 0.4),
-                inset 0 0 20px rgba(0, 212, 255, 0.1);
-        }
-
-        .countdown-number {
-            font-size: 3rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, var(--neon-orange), var(--neon-blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            display: block;
-            line-height: 1;
-        }
-
-        .countdown-label {
-            font-size: 0.9rem;
-            color: var(--metallic-silver);
-            margin-top: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* ============================================
-           NEWSLETTER SIGNUP
-        ============================================ */
-        .newsletter-section {
-            max-width: 500px;
-            margin: 0 auto 3rem;
-            animation: fadeInUp 1s ease-out 1.1s both;
-        }
-
-        .newsletter-title {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            color: var(--neon-cyan);
-        }
-
-        .newsletter-form {
-            display: flex;
-            gap: 1rem;
-            flex-direction: column;
-        }
-
-        .input-group {
-            position: relative;
-        }
-
-        .honeypot-field {
-            position: absolute;
-            left: -9999px;
-            width: 1px;
-            height: 1px;
-            opacity: 0;
-            pointer-events: none;
-            tab-index: -1;
-        }
-
-        .newsletter-input {
+        
+        /* Discount Section */
+        .discount-section {
+            margin: 2rem 0;
+            max-width: 800px;
             width: 100%;
-            padding: 1rem 1.5rem;
-            background: rgba(26, 26, 36, 0.8);
-            border: 2px solid rgba(255, 107, 53, 0.3);
-            border-radius: 50px;
-            color: #fff;
-            font-family: var(--font-primary);
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            outline: none;
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(0, 212, 255, 0.1) 100%);
+            border: 2px solid var(--primary-orange);
+            border-radius: 20px;
+            padding: clamp(1.5rem, 5vw, 2.5rem);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .discount-section::before {
+            content: '🎁';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-size: clamp(4rem, 15vw, 8rem);
+            opacity: 0.1;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .discount-title {
+            font-size: clamp(1.2rem, 5vw, 2rem);
+            font-weight: 900;
+            color: var(--primary-orange);
+            margin-bottom: 1rem;
+            text-shadow: 0 0 20px var(--glow-orange);
+        }
+        
+        .discount-subtitle {
+            font-size: clamp(0.9rem, 3.5vw, 1.1rem);
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+        
+        .discount-code-box {
+            background: rgba(26, 26, 26, 0.8);
+            border: 2px dashed var(--primary-blue);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            position: relative;
+        }
+        
+        .discount-code {
+            font-size: clamp(1.5rem, 7vw, 2.5rem);
+            font-weight: 900;
+            color: var(--success-green);
+            letter-spacing: clamp(2px, 2vw, 5px);
+            text-shadow: 0 0 20px var(--success-green);
+            user-select: text;
             -webkit-user-select: text;
             -moz-user-select: text;
-            -ms-user-select: text;
-            user-select: text;
+            word-break: break-all;
         }
-
-        .newsletter-input:focus {
-            border-color: var(--neon-orange);
-            box-shadow: 0 0 20px rgba(255, 107, 53, 0.3);
-        }
-
-        .newsletter-input::placeholder {
-            color: rgba(255, 255, 255, 0.5);
-        }
-
-        .newsletter-input.error {
-            border-color: #ff3838;
-            box-shadow: 0 0 20px rgba(255, 56, 56, 0.3);
-        }
-
-        .newsletter-input.success {
-            border-color: #00ff88;
-            box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
-        }
-
-        .newsletter-input.warning {
-            border-color: #ffa500;
-            box-shadow: 0 0 20px rgba(255, 165, 0, 0.3);
-        }
-
-        .newsletter-button {
-            padding: 1rem 2.5rem;
-            background: linear-gradient(135deg, var(--neon-orange), var(--neon-blue));
+        
+        .copy-code-btn {
+            margin-top: 1rem;
+            padding: 0.8rem 2rem;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, #00a8cc 100%);
             border: none;
             border-radius: 50px;
-            color: #fff;
-            font-family: var(--font-primary);
-            font-size: 1.1rem;
+            color: white;
+            font-family: 'Vazirmatn', sans-serif;
+            font-size: clamp(0.85rem, 3.5vw, 1rem);
             font-weight: 700;
             cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 212, 255, 0.4);
+            width: 100%;
+            max-width: 250px;
+        }
+        
+        .copy-code-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0, 212, 255, 0.6);
+        }
+        
+        .copy-code-btn.copied {
+            background: linear-gradient(135deg, var(--success-green) 0%, #00cc6a 100%);
+        }
+        
+        .discount-timer {
+            margin-top: 1.5rem;
+            font-size: clamp(0.8rem, 3vw, 0.9rem);
+            color: var(--warning-yellow);
+        }
+        
+        .discount-percentage {
+            display: inline-block;
+            background: var(--primary-orange);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: clamp(1rem, 4vw, 1.5rem);
+            font-weight: 900;
+            margin: 1rem 0;
+            box-shadow: 0 5px 20px var(--glow-orange);
+        }
+        
+        /* Live Stats Section */
+        .stats-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(150px, 100%), 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+            max-width: 1000px;
+            width: 100%;
+            padding: 0 1rem;
+        }
+        
+        .stat-card {
+            background: rgba(26, 26, 26, 0.6);
+            border: 2px solid var(--primary-blue);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            backdrop-filter: blur(10px);
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
         }
-
-        .newsletter-button:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
+        
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .stat-card:hover::before {
+            left: 100%;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-orange);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+        
+        .stat-icon {
+            font-size: clamp(2rem, 8vw, 3rem);
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 0 10px var(--glow-blue));
+        }
+        
+        .stat-number {
+            font-size: clamp(1.5rem, 6vw, 2.5rem);
+            font-weight: 900;
+            color: var(--primary-orange);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: clamp(0.75rem, 3vw, 0.95rem);
+            color: var(--metallic-silver);
+            font-weight: 500;
+        }
+        
+        /* Map Section */
+        .map-section {
+            margin: 2rem 0;
+            max-width: 1000px;
+            width: 100%;
+            padding: 0 1rem;
+        }
+        
+        .map-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .map-title {
+            font-size: clamp(1.3rem, 5vw, 2rem);
+            font-weight: 900;
+            color: var(--primary-orange);
+            margin-bottom: 0.5rem;
+        }
+        
+        .map-subtitle {
+            font-size: clamp(0.9rem, 3.5vw, 1.1rem);
+            color: var(--text-light);
+        }
+        
+        .map-container {
+            background: rgba(26, 26, 26, 0.6);
+            border: 2px solid var(--primary-blue);
+            border-radius: 20px;
+            padding: 1rem;
+            backdrop-filter: blur(10px);
+            width: 100%;
+        }
+        
+        #map {
+            height: clamp(250px, 50vw, 400px);
+            border-radius: 15px;
+            overflow: hidden;
+            width: 100%;
+        }
+        
+        .map-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .map-info-item {
+            background: rgba(26, 26, 26, 0.8);
+            border: 1px solid rgba(255, 107, 53, 0.3);
+            border-radius: 15px;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            transition: all 0.3s ease;
+        }
+        
+        .map-info-item:hover {
+            border-color: var(--primary-orange);
+            transform: translateY(-3px);
+        }
+        
+        .map-info-icon {
+            min-width: 50px;
+            text-align: center;
+        }
+        
+        .map-info-icon svg {
+            width: clamp(35px, 8vw, 50px);
+            height: clamp(35px, 8vw, 50px);
+            filter: drop-shadow(0 4px 12px rgba(255, 107, 53, 0.3));
+            transition: all 0.3s ease;
         }
 
-        .newsletter-button::before {
+        .map-info-item:hover .map-info-icon svg {
+            transform: scale(1.1) rotate(5deg);
+            filter: drop-shadow(0 6px 16px rgba(0, 212, 255, 0.5));
+        }
+        
+        .map-info-content h4 {
+            color: var(--primary-orange);
+            font-size: clamp(0.85rem, 3.5vw, 1rem);
+            margin-bottom: 0.3rem;
+        }
+        
+        .map-info-content p {
+            color: var(--text-light);
+            font-size: clamp(0.75rem, 3vw, 0.9rem);
+            line-height: 1.5;
+        }
+        
+        /* Navigation Buttons */
+        .navigation-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr));
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+        
+        .directions-btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-family: 'Vazirmatn', sans-serif;
+            font-size: clamp(0.8rem, 3vw, 1rem);
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .directions-btn svg {
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+            width: 18px;
+            height: 18px;
+        }
+        
+        .google-maps {
+            background: linear-gradient(135deg, #4285F4 0%, #34A853 100%);
+            box-shadow: 0 5px 20px rgba(66, 133, 244, 0.4);
+        }
+        
+        .google-maps:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(66, 133, 244, 0.6);
+        }
+        
+        .neshan-maps {
+            background: linear-gradient(135deg, #FF6B35 0%, #FF8C61 100%);
+            box-shadow: 0 5px 20px rgba(255, 107, 53, 0.4);
+        }
+        
+        .neshan-maps:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(255, 107, 53, 0.6);
+        }
+        
+        /* WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+        
+        .whatsapp-button {
+            width: clamp(50px, 15vw, 70px);
+            height: clamp(50px, 15vw, 70px);
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 30px rgba(37, 211, 102, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+            text-decoration: none;
+        }
+        
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 40px rgba(37, 211, 102, 0.7);
+        }
+        
+        .whatsapp-button svg {
+            width: clamp(30px, 10vw, 40px);
+            height: clamp(30px, 10vw, 40px);
+            fill: white;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 5px 30px rgba(37, 211, 102, 0.5);
+            }
+            50% {
+                box-shadow: 0 5px 40px rgba(37, 211, 102, 0.8);
+            }
+        }
+        
+        .whatsapp-tooltip {
+            position: absolute;
+            right: 80px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: white;
+            color: #128C7E;
+            padding: 0.6rem 1rem;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: clamp(0.75rem, 3vw, 0.9rem);
+            white-space: nowrap;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-float:hover .whatsapp-tooltip {
+            opacity: 1;
+            right: calc(clamp(50px, 15vw, 70px) + 10px);
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            margin: 2rem 0;
+            text-align: center;
+            width: 100%;
+            padding: 0 1rem;
+        }
+        
+        .contact-title {
+            font-size: clamp(1.1rem, 4vw, 1.5rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--metallic-silver);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            background: rgba(26, 26, 26, 0.6);
+            border: 2px solid var(--primary-blue);
+            border-radius: 50px;
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: clamp(0.8rem, 3vw, 1rem);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .social-link::before {
             content: '';
             position: absolute;
             top: 50%;
@@ -533,1758 +838,1349 @@
             width: 0;
             height: 0;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(0, 212, 255, 0.2);
             transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
+            transition: width 0.3s ease, height 0.3s ease;
         }
-
-        .newsletter-button:hover::before {
+        
+        .social-link:hover::before {
             width: 300px;
             height: 300px;
         }
-
-        .newsletter-button:hover:not(:disabled) {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.5);
-        }
-
-        .newsletter-button span {
-            position: relative;
-            z-index: 1;
-        }
-
-        /* ============================================
-           MESSAGE BOXES
-        ============================================ */
-        .message-box {
-            display: none;
-            padding: 1rem 1.5rem;
-            border-radius: 10px;
-            margin-top: 1rem;
-            text-align: center;
-            font-size: 0.95rem;
-            animation: slideIn 0.4s ease-out;
-        }
-
-        .message-box.show {
-            display: block;
-        }
-
-        .success-message {
-            background: rgba(0, 255, 136, 0.15);
-            border: 1px solid rgba(0, 255, 136, 0.5);
-            color: #00ff88;
-        }
-
-        .error-message {
-            background: rgba(255, 56, 56, 0.15);
-            border: 1px solid rgba(255, 56, 56, 0.5);
-            color: #ff5858;
-        }
-
-        .warning-message {
-            background: rgba(255, 165, 0, 0.15);
-            border: 1px solid rgba(255, 165, 0, 0.5);
-            color: #ffa500;
-        }
-
-        .blocked-message {
-            background: rgba(255, 0, 0, 0.2);
-            border: 1px solid rgba(255, 0, 0, 0.6);
-            color: #ff4444;
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* ============================================
-           DISCOUNT MODAL
-        ============================================ */
-        .discount-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 9999;
-            justify-content: center;
-            align-items: center;
-            animation: fadeInModal 0.3s ease-out;
-        }
-
-        .discount-modal.show {
-            display: flex;
-        }
-
-        @keyframes fadeInModal {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        .discount-modal-content {
-            background: linear-gradient(135deg, rgba(26, 26, 36, 0.95), rgba(16, 16, 30, 0.95));
-            border: 2px solid var(--neon-orange);
-            border-radius: 20px;
-            padding: 3rem 2rem;
-            max-width: 500px;
-            width: 90%;
-            text-align: center;
-            position: relative;
-            backdrop-filter: blur(20px);
-            box-shadow: 0 20px 60px rgba(255, 107, 53, 0.4);
-            animation: scaleIn 0.4s ease-out;
-        }
-
-        @keyframes scaleIn {
-            from {
-                transform: scale(0.8);
-                opacity: 0;
-            }
-            to {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 1rem;
-            left: 1rem;
-            background: rgba(255, 107, 53, 0.2);
-            border: 1px solid var(--neon-orange);
-            color: var(--neon-orange);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 1.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .modal-close:hover {
-            background: var(--neon-orange);
-            color: #fff;
-            transform: rotate(90deg);
-        }
-
-        .modal-icon {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-
-        .modal-title {
-            font-size: 2rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, var(--neon-orange), var(--neon-blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 1rem;
-        }
-
-        .modal-description {
-            color: var(--metallic-silver);
-            margin-bottom: 2rem;
-            font-size: 1rem;
-        }
-
-        .discount-code-box {
-            background: rgba(0, 212, 255, 0.1);
-            border: 2px dashed var(--neon-blue);
-            border-radius: 15px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-        }
-
-        .discount-code {
-            font-size: 2rem;
-            font-weight: 900;
-            color: var(--neon-cyan);
-            letter-spacing: 3px;
-            margin-bottom: 0.5rem;
-            font-family: 'Courier New', monospace;
-            -webkit-user-select: text;
-            -moz-user-select: text;
-            user-select: text;
-        }
-
-        .discount-value {
-            color: var(--neon-orange);
-            font-size: 1.2rem;
-            font-weight: 700;
-        }
-
-        .copy-button {
-            background: linear-gradient(135deg, var(--neon-orange), var(--neon-blue));
-            border: none;
-            border-radius: 50px;
-            padding: 1rem 2rem;
-            color: #fff;
-            font-family: var(--font-primary);
-            font-size: 1rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            width: 100%;
-        }
-
-        .copy-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.5);
-        }
-
-        .copy-button.copied {
-            background: #00ff88;
-        }
-
-        /* ============================================
-           LOCATION SECTION
-        ============================================ */
-        .location-section {
-            max-width: 1200px;
-            margin: 4rem auto;
-            padding: 0 2rem;
-            animation: fadeInUp 1s ease-out 1.4s both;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 900;
-            text-align: center;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--neon-orange), var(--neon-blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            color: var(--metallic-silver);
-            margin-bottom: 3rem;
-            font-size: 1.1rem;
-        }
-
-        .location-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            background: rgba(26, 26, 36, 0.4);
-            border: 1px solid rgba(0, 212, 255, 0.2);
-            border-radius: 20px;
-            padding: 2rem;
-            backdrop-filter: blur(10px);
-        }
-
-        .location-info {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .info-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 1.5rem;
-            padding: 1rem;
-            background: rgba(0, 212, 255, 0.05);
-            border-radius: 10px;
-            border-right: 3px solid var(--neon-orange);
-            transition: all 0.3s ease;
-        }
-
-        .info-item:hover {
-            transform: translateX(-5px);
-            background: rgba(0, 212, 255, 0.1);
-        }
-
-        .info-icon {
-            font-size: 1.8rem;
-            margin-left: 1rem;
-            min-width: 40px;
-        }
-
-        .info-content h3 {
-            color: var(--neon-blue);
-            font-size: 1.1rem;
-            margin-bottom: 0.3rem;
-        }
-
-        .info-content p {
-            color: var(--metallic-silver);
-            line-height: 1.6;
-            -webkit-user-select: text;
-            -moz-user-select: text;
-            user-select: text;
-        }
-
-        .info-content a {
-            color: var(--neon-orange);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .info-content a:hover {
-            color: var(--neon-blue);
-        }
-
-        .map-container {
-            border-radius: 15px;
-            overflow: hidden;
-            height: 400px;
-            border: 2px solid rgba(0, 212, 255, 0.3);
-        }
-
-        #map {
-            width: 100%;
-            height: 100%;
-        }
-
-        .directions-button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            background: linear-gradient(135deg, #4285F4, #34A853);
-            border: none;
-            border-radius: 50px;
-            padding: 1rem 2rem;
-            color: #fff;
-            font-family: var(--font-primary);
-            font-size: 1rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 1rem;
-            text-decoration: none;
-        }
-
-        .directions-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(66, 133, 244, 0.5);
-        }
-
-        .directions-button.neshan-button {
-            background: linear-gradient(135deg, var(--neon-orange), var(--neon-blue));
-        }
-
-        .directions-button.neshan-button:hover {
-            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.5);
-        }
-
-        .directions-button i {
-            font-size: 1.2rem;
-        }
-
-        /* ============================================
-           FEATURES SECTION
-        ============================================ */
-        .features-section {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            max-width: 900px;
-            margin: 0 auto 3rem;
-            padding: 0 2rem;
-            animation: fadeInUp 1s ease-out 1.3s both;
-        }
-
-        .feature-card {
-            padding: 2rem;
-            background: rgba(26, 26, 36, 0.4);
-            border: 1px solid rgba(0, 212, 255, 0.2);
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-            text-align: center;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--neon-orange);
-            box-shadow: 0 10px 40px rgba(255, 107, 53, 0.3);
-        }
-
-        .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .feature-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            color: var(--neon-blue);
-        }
-
-        .feature-description {
-            font-size: 0.95rem;
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        /* ============================================
-           WHATSAPP FLOATING BUTTON
-        ============================================ */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            left: 30px;
-            z-index: 9998;
-            animation: fadeInFloat 1s ease-out 2s both;
-        }
-
-        @keyframes fadeInFloat {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .whatsapp-button {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #25D366, #128C7E);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.5);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            position: relative;
-            color: white;
-            font-size: 2rem;
-        }
-
-        .whatsapp-button:hover {
-            transform: scale(1.1) translateY(-5px);
-            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.7);
-        }
-
-        .whatsapp-button::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: rgba(37, 211, 102, 0.3);
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(1.5);
-                opacity: 0;
-            }
-        }
-
-        .whatsapp-icon {
-            position: relative;
-            z-index: 1;
-        }
-
-        .whatsapp-tooltip {
-            position: absolute;
-            left: 75px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(26, 26, 36, 0.95);
-            border: 1px solid var(--neon-orange);
-            border-radius: 10px;
-            padding: 0.8rem 1.2rem;
-            white-space: nowrap;
-            opacity: 0;
-            pointer-events: none;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-        }
-
-        .whatsapp-float:hover .whatsapp-tooltip {
-            opacity: 1;
-            left: 80px;
-        }
-
-        /* ============================================
-           FOOTER / SOCIAL MEDIA
-        ============================================ */
-        .footer {
-            padding: 2rem;
-            text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            animation: fadeIn 1.5s ease-out 1.5s both;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .social-link {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-size: 1.5rem;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            text-decoration: none;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .social-link.instagram {
-            background: linear-gradient(135deg, #833AB4 0%, #FD1D1D 50%, #F77737 100%);
-            background-size: 200% 200%;
-            animation: instagramGradient 3s ease infinite;
-            box-shadow: 0 5px 20px rgba(131, 58, 180, 0.4);
-        }
-
-        @keyframes instagramGradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .social-link.telegram {
-            background: linear-gradient(135deg, #0088cc, #229ED9);
-            box-shadow: 0 5px 20px rgba(0, 136, 204, 0.4);
-        }
-
-        .social-link.whatsapp {
-            background: linear-gradient(135deg, #25D366, #128C7E);
-            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
-            position: relative;
-        }
-
-        .social-link.whatsapp::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            border: 3px solid rgba(37, 211, 102, 0.6);
-            animation: wavePulse 2s infinite;
-        }
-
-        @keyframes wavePulse {
-            0% {
-                transform: scale(1);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(1.6);
-                opacity: 0;
-            }
-        }
-
-        .social-link.phone {
-            background: linear-gradient(135deg, var(--neon-orange), #ff8c5a);
-            box-shadow: 0 5px 20px rgba(255, 107, 53, 0.4);
-            animation: phonePulse 2s ease-in-out infinite;
-        }
-
-        @keyframes phonePulse {
-            0%, 100% {
-                box-shadow: 0 5px 20px rgba(255, 107, 53, 0.4);
-            }
-            50% {
-                box-shadow: 0 5px 30px rgba(255, 107, 53, 0.8);
-            }
-        }
-
-        .social-link::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            transform: scale(0);
-            transition: transform 0.5s ease;
-        }
-
-        .social-link:hover::before {
-            transform: scale(1);
-        }
-
+        
         .social-link:hover {
-            transform: translateY(-10px) scale(1.15) rotate(5deg);
+            transform: translateY(-3px);
         }
-
-        .social-link.instagram:hover {
-            box-shadow: 0 10px 35px rgba(131, 58, 180, 0.7);
-        }
-
-        .social-link.telegram:hover {
-            box-shadow: 0 10px 35px rgba(0, 136, 204, 0.7);
-        }
-
-        .social-link.whatsapp:hover {
-            box-shadow: 0 10px 35px rgba(37, 211, 102, 0.7);
-        }
-
-        .social-link.phone:hover {
-            box-shadow: 0 10px 35px rgba(255, 107, 53, 0.7);
-        }
-
-        .social-link i {
-            position: relative;
+        
+        .social-icon {
             z-index: 1;
-            transition: transform 0.3s ease;
         }
-
-        .social-link:hover i {
+        
+        .social-text {
+            z-index: 1;
+        }
+        
+        .social-icon svg {
+            width: clamp(18px, 5vw, 24px);
+            height: clamp(18px, 5vw, 24px);
+            fill: currentColor;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover .social-icon svg {
             transform: scale(1.2);
         }
-
-        .contact-info {
-            margin-bottom: 1.5rem;
+        
+        .social-link.phone {
+            border-color: #25D366;
         }
-
-        .contact-item {
-            display: inline-block;
-            margin: 0.5rem 1rem;
-            color: var(--metallic-silver);
-            text-decoration: none;
-            transition: color 0.3s ease;
+        
+        .social-link.phone:hover {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            box-shadow: 0 0 30px rgba(37, 211, 102, 0.6);
+            border-color: #25D366;
         }
-
-        .contact-item:hover {
-            color: var(--neon-orange);
+        
+        .social-link.instagram {
+            border-color: #E1306C;
         }
-
-        .contact-item i {
-            margin-left: 0.5rem;
+        
+        .social-link.instagram:hover {
+            background: linear-gradient(135deg, #833AB4 0%, #FD1D1D 50%, #F77737 100%);
+            box-shadow: 0 0 30px rgba(225, 48, 108, 0.6);
+            border-color: #E1306C;
         }
-
-        .copyright {
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 0.9rem;
+        
+        .social-link.telegram {
+            border-color: #0088cc;
         }
-
-        /* ============================================
-           METALLIC DECORATIVE ELEMENTS
-        ============================================ */
-        .metallic-bar {
-            position: fixed;
-            height: 3px;
-            background: linear-gradient(90deg, 
-                transparent 0%, 
-                var(--neon-orange) 50%, 
-                transparent 100%);
-            animation: scanLine 4s linear infinite;
-            z-index: 5;
+        
+        .social-link.telegram:hover {
+            background: linear-gradient(135deg, #0088cc 0%, #00BFFF 100%);
+            box-shadow: 0 0 30px rgba(0, 136, 204, 0.6);
+            border-color: #0088cc;
+        }
+        
+        .social-link.email {
+            border-color: #EA4335;
+        }
+        
+        .social-link.email:hover {
+            background: linear-gradient(135deg, #EA4335 0%, #FBBC04 100%);
+            box-shadow: 0 0 30px rgba(234, 67, 53, 0.6);
+            border-color: #EA4335;
+        }
+        
+        /* Newsletter */
+        .newsletter {
+            margin: 2rem 0;
+            max-width: 600px;
             width: 100%;
+            padding: 0 1rem;
         }
-
-        .metallic-bar.top {
-            top: 0;
+        
+        .newsletter-form {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            position: relative;
         }
-
-        .metallic-bar.bottom {
-            bottom: 0;
-            animation-delay: 2s;
+        
+        .newsletter-input {
+            flex: 1;
+            min-width: min(200px, 100%);
+            padding: 1rem 1.5rem;
+            background: rgba(26, 26, 26, 0.6);
+            border: 2px solid rgba(255, 107, 53, 0.3);
+            border-radius: 50px;
+            color: var(--text-light);
+            font-family: 'Vazirmatn', sans-serif;
+            font-size: clamp(0.85rem, 3.5vw, 1rem);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
         }
-
-        @keyframes scanLine {
-            0% {
-                opacity: 0;
-            }
-            50% {
-                opacity: 1;
-            }
-            100% {
-                opacity: 0;
-            }
+        
+        .newsletter-input:focus {
+            outline: none;
+            border-color: var(--primary-orange);
+            box-shadow: 0 0 20px rgba(255, 107, 53, 0.3);
         }
-
-        .loading-ring {
-            display: inline-block;
+        
+        .newsletter-input::placeholder {
+            color: rgba(224, 224, 224, 0.5);
+        }
+        
+        .newsletter-input.error {
+            border-color: var(--error-red);
+            box-shadow: 0 0 20px rgba(255, 56, 56, 0.3);
+        }
+        
+        .newsletter-input.success {
+            border-color: var(--success-green);
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+        }
+        
+        .newsletter-input.warning {
+            border-color: var(--warning-yellow);
+            box-shadow: 0 0 20px rgba(255, 184, 0, 0.3);
+        }
+        
+        .newsletter-button {
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, var(--primary-orange) 0%, #ff8c61 100%);
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-family: 'Vazirmatn', sans-serif;
+            font-size: clamp(0.85rem, 3.5vw, 1rem);
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(255, 107, 53, 0.4);
+            position: relative;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        
+        .newsletter-button:hover:not(:disabled) {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(255, 107, 53, 0.6);
+        }
+        
+        .newsletter-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        
+        .newsletter-button.loading::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
             width: 20px;
             height: 20px;
-            border: 3px solid rgba(255, 255, 255, 0.3);
-            border-top-color: #fff;
+            margin: -10px 0 0 -10px;
+            border: 2px solid white;
+            border-top-color: transparent;
             border-radius: 50%;
-            animation: spin 1s linear infinite;
+            animation: spin 0.6s linear infinite;
         }
-
+        
         @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .form-message {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border-radius: 15px;
+            margin-top: 1rem;
+            text-align: center;
+            font-weight: 500;
+            font-size: clamp(0.8rem, 3vw, 0.95rem);
+            animation: slideDown 0.3s ease;
+            display: none;
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
             to {
-                transform: rotate(360deg);
+                opacity: 1;
+                transform: translateY(0);
             }
         }
-
-        /* استایل سفارشی برای پاپ‌آپ نقشه */
-        .custom-popup .leaflet-popup-content-wrapper {
-            background: rgba(26, 26, 36, 0.95);
-            border: 2px solid #ff6b35;
+        
+        .form-message.success {
+            background: rgba(0, 255, 136, 0.1);
+            border: 2px solid var(--success-green);
+            color: var(--success-green);
+            display: block;
+        }
+        
+        .form-message.error {
+            background: rgba(255, 56, 56, 0.1);
+            border: 2px solid var(--error-red);
+            color: var(--error-red);
+            display: block;
+        }
+        
+        .form-message.warning {
+            background: rgba(255, 184, 0, 0.1);
+            border: 2px solid var(--warning-yellow);
+            color: var(--warning-yellow);
+            display: block;
+        }
+        
+        .rate-limit-info {
+            width: 100%;
+            text-align: center;
+            margin-top: 0.5rem;
+            font-size: clamp(0.75rem, 2.5vw, 0.85rem);
+            color: var(--metallic-silver);
+            display: none;
+        }
+        
+        .rate-limit-info.show {
+            display: block;
+        }
+        
+        /* Footer */
+        .footer {
+            margin-top: 3rem;
+            padding: 2rem 1rem;
+            text-align: center;
+            border-top: 1px solid rgba(255, 107, 53, 0.2);
+            width: 100%;
+        }
+        
+        .footer-text {
+            color: var(--metallic-silver);
+            font-size: clamp(0.75rem, 2.5vw, 0.9rem);
+        }
+        
+        /* Loading Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            animation: fadeIn 1s ease-out;
+        }
+        
+        /* Glowing Orbs */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(40px);
+            opacity: 0.3;
+            animation: orbFloat 8s ease-in-out infinite;
+        }
+        
+        .orb-1 {
+            width: clamp(150px, 40vw, 300px);
+            height: clamp(150px, 40vw, 300px);
+            background: var(--primary-orange);
+            top: 10%;
+            right: 10%;
+            animation-delay: 0s;
+        }
+        
+        .orb-2 {
+            width: clamp(120px, 35vw, 250px);
+            height: clamp(120px, 35vw, 250px);
+            background: var(--primary-blue);
+            bottom: 20%;
+            left: 15%;
+            animation-delay: 2s;
+        }
+        
+        @keyframes orbFloat {
+            0%, 100% {
+                transform: translate(0, 0);
+            }
+            50% {
+                transform: translate(30px, 30px);
+            }
+        }
+        
+        /* Leaflet Custom Styles */
+        .leaflet-popup-content-wrapper {
+            background: rgba(26, 26, 26, 0.95);
+            color: var(--text-light);
+            border: 2px solid var(--primary-orange);
             border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
             backdrop-filter: blur(10px);
         }
-
-        .custom-popup .leaflet-popup-tip {
-            background: rgba(26, 26, 36, 0.95);
+        
+        .leaflet-popup-tip {
+            background: rgba(26, 26, 26, 0.95);
         }
-
-        .custom-popup .leaflet-popup-content {
-            margin: 0;
-            color: white;
+        
+        .custom-popup h3 {
+            color: var(--primary-orange);
+            margin-bottom: 0.5rem;
+            font-size: clamp(0.9rem, 3.5vw, 1.1rem);
         }
-
-        /* ============================================
-           RESPONSIVE DESIGN
-        ============================================ */
+        
+        .custom-popup p {
+            margin: 0.3rem 0;
+            font-size: clamp(0.75rem, 3vw, 0.9rem);
+        }
+        
+        /* Mobile Specific */
         @media (max-width: 768px) {
-            .logo {
-                font-size: 2.5rem;
+            .newsletter-form {
+                flex-direction: column;
             }
-
-            .engine-icon {
-                font-size: 5rem;
+            
+            .newsletter-input,
+            .newsletter-button {
+                width: 100%;
             }
-
-            .coming-soon {
-                font-size: 2.5rem;
-            }
-
-            .location-container {
-                grid-template-columns: 1fr;
-            }
-
-            .map-container {
-                height: 300px;
-            }
-
-            .whatsapp-float {
-                bottom: 20px;
-                left: 20px;
-            }
-
-            .whatsapp-button {
-                width: 50px;
-                height: 50px;
-                font-size: 1.6rem;
-            }
-
-            .discount-banner {
-                padding: 0.8rem 1rem;
-            }
-
-            .discount-title {
-                font-size: 1.1rem;
-            }
-
-            .discount-subtitle {
-                font-size: 0.8rem;
-            }
-
-            .social-link {
-                width: 55px;
-                height: 55px;
-                font-size: 1.3rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .logo {
-                font-size: 2rem;
-            }
-
-            .coming-soon {
-                font-size: 2rem;
-            }
-
-            .engine-icon {
-                font-size: 4rem;
-            }
-
-            .social-link {
-                width: 50px;
-                height: 50px;
-                font-size: 1.2rem;
+            
+            .whatsapp-tooltip {
+                display: none;
             }
             
             .social-links {
-                gap: 1rem;
+                gap: 0.8rem;
+            }
+            
+            .social-link {
+                font-size: 0.85rem;
+                padding: 0.7rem 1.2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 0.5rem;
+            }
+            
+            .countdown {
+                gap: 0.3rem;
+            }
+            
+            .countdown-item {
+                min-width: 60px;
+                padding: 0.6rem 0.8rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Metallic Scan Lines -->
-    <div class="metallic-bar top"></div>
-    <div class="metallic-bar bottom"></div>
-
-    <!-- Background Container -->
-    <div class="background-container">
-        <div class="background-gradient"></div>
-        <div class="grid-overlay"></div>
-        <div class="particles" id="particles"></div>
+    <!-- Background Animation -->
+    <div class="bg-animation">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
     </div>
-
-    <!-- Discount Banner -->
-    <div class="discount-banner">
-        <div class="discount-content">
-            <div class="discount-title">🎁 تخفیف ویژه راه‌اندازی</div>
-            <div class="discount-subtitle">با ثبت‌نام زودهنگام، کد تخفیف 10% دریافت کنید!</div>
+    
+    <!-- Particles -->
+    <div class="particles" id="particles"></div>
+    
+    <!-- WhatsApp Floating Button -->
+    <div class="whatsapp-float">
+        <a href="https://wa.me/989128625637?text=سلام، من از سایت موتوشاتل اومدم" target="_blank" class="whatsapp-button" aria-label="تماس با واتساپ">
+            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 7.933-2.127c2.42 1.37 5.173 2.127 8.067 2.127 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.467c-2.482 0-4.908-0.646-7.07-1.87l-0.507-0.292-5.247 1.408 1.433-5.204-0.321-0.521c-1.362-2.21-2.088-4.722-2.088-7.321 0-7.66 6.24-13.9 13.9-13.9s13.9 6.24 13.9 13.9c0 7.66-6.24 13.9-13.9 13.9zM21.305 18.421c-0.421-0.211-2.474-1.218-2.857-1.357-0.384-0.139-0.663-0.21-0.942 0.211s-1.082 1.357-1.326 1.638c-0.245 0.28-0.489 0.315-0.91 0.105-0.421-0.211-1.777-0.653-3.384-2.082-1.251-1.111-2.095-2.482-2.34-2.903s-0.026-0.649 0.185-0.859c0.189-0.188 0.421-0.489 0.632-0.734 0.21-0.245 0.28-0.421 0.421-0.7 0.139-0.28 0.070-0.525-0.035-0.735s-0.942-2.266-1.291-3.103c-0.339-0.815-0.684-0.704-0.942-0.718-0.244-0.012-0.523-0.015-0.803-0.015s-0.734 0.105-1.118 0.525c-0.384 0.421-1.464 1.428-1.464 3.483s1.499 4.041 1.708 4.321c0.21 0.28 2.949 4.502 7.146 6.314 0.998 0.431 1.777 0.688 2.384 0.881 1.006 0.319 1.922 0.274 2.647 0.166 0.807-0.121 2.474-1.011 2.823-1.987s0.349-1.813 0.244-1.987c-0.105-0.175-0.384-0.28-0.805-0.49z"/>
+            </svg>
+            <span class="whatsapp-tooltip">گفتگو در واتساپ</span>
+        </a>
+    </div>
+    
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Logo Section -->
+        <div class="logo-section fade-in">
+            <div class="logo">موتوشاتل</div>
+            <div class="logo-subtitle">MOTOSHATEL</div>
         </div>
-    </div>
-
-    <!-- Main Content -->
-    <div class="main-container">
-        <!-- Header -->
-        <header class="header">
-            <div class="logo-container">
-                <h1 class="logo">MOTOSHATEL</h1>
-                <div class="logo-subtitle">موتوشاتل | AUTOMOTIVE EXCELLENCE</div>
+        
+        <!-- Engine Visual -->
+        <div class="engine-container fade-in">
+            <div class="engine-glow"></div>
+            <div class="engine-core">
+                <div class="engine-icon">⚙️</div>
             </div>
-        </header>
-
-        <!-- Hero Section -->
-        <main class="hero-section">
-            <div class="engine-icon">⚙️</div>
-
-            <h2 class="coming-soon">
-                <span class="coming-soon-primary">به زودی</span>
-            </h2>
-
-            <p class="tagline">فروشگاه تخصصی قطعات خودرو</p>
-            
-            <p class="description">
-                موتوشاتل با افتخار بزرگترین و کامل‌ترین فروشگاه قطعات خودرو را در اختیار شما قرار می‌دهد. تجربه‌ای نوین از خرید قطعات خودرو با کیفیت و اصالت تضمین شده.
-            </p>
-
-            <!-- Countdown Timer -->
-            <div class="countdown-container" id="countdown">
-                <div class="countdown-item">
-                    <span class="countdown-number" id="days">00</span>
-                    <span class="countdown-label">روز</span>
-                </div>
-                <div class="countdown-item">
-                    <span class="countdown-number" id="hours">00</span>
-                    <span class="countdown-label">ساعت</span>
-                </div>
-                <div class="countdown-item">
-                    <span class="countdown-number" id="minutes">00</span>
-                    <span class="countdown-label">دقیقه</span>
-                </div>
-                <div class="countdown-item">
-                    <span class="countdown-number" id="seconds">00</span>
-                    <span class="countdown-label">ثانیه</span>
-                </div>
+        </div>
+        
+        <!-- Coming Soon Section -->
+        <div class="coming-soon fade-in">
+            <h1>به زودی راه‌اندازی می‌شود</h1>
+            <p>فروشگاه تخصصی قطعات خودرو</p>
+            <p class="tagline">موتور کامل | سیلندر | سرسیلندر</p>
+        </div>
+        
+        <!-- Countdown Timer -->
+        <div class="countdown fade-in">
+            <div class="countdown-item">
+                <span class="countdown-number" id="days">30</span>
+                <span class="countdown-label">روز</span>
             </div>
-
-            <!-- Newsletter -->
-            <div class="newsletter-section">
-                <h3 class="newsletter-title">از راه‌اندازی سایت باخبر و از تخفیف ویژه ما بهره مند شوید</h3>
-                <form class="newsletter-form" id="newsletterForm" novalidate>
-                    <input 
-                        type="text" 
-                        name="website" 
-                        id="honeypot"
-                        class="honeypot-field"
-                        tabindex="-1"
-                        autocomplete="off"
-                    >
-                    
-                    <div class="input-group">
-                        <input 
-                            type="email" 
-                            class="newsletter-input" 
-                            placeholder="برای ثبت نام ایمیل خود را وارد کنید"
-                            required
-                            id="emailInput"
-                            name="email"
-                            autocomplete="email"
-                        >
-                    </div>
-                    <button type="submit" class="newsletter-button" id="submitBtn">
-                        <span id="buttonText">مرا باخبر کنید</span>
-                    </button>
-                </form>
-                
-                <div class="message-box success-message" id="successMessage">
-                    ✓ ایمیل شما با موفقیت ثبت شد! به زودی از راه‌اندازی سایت مطلع خواهید شد.
-                </div>
-                
-                <div class="message-box warning-message" id="warningMessage">
-                    ⚠ این ایمیل قبلاً ثبت شده است! شما در لیست خبرنامه ما هستید.
-                </div>
-                
-                <div class="message-box error-message" id="errorMessage">
-                    ⚠ لطفاً یک ایمیل معتبر وارد کنید.
-                </div>
-
-                <div class="message-box blocked-message" id="blockedMessage">
-                    🚫 فعالیت مشکوک شناسایی شد. لطفاً بعد از چند دقیقه دوباره تلاش کنید.
-                </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="hours">12</span>
+                <span class="countdown-label">ساعت</span>
             </div>
-        </main>
-
-        <!-- Location Section -->
-        <section class="location-section">
-            <h2 class="section-title">📍 لوکیشن فروشگاه</h2>
-            <p class="section-subtitle">ما را پیدا کنید و از نزدیک با ما آشنا شوید</p>
-
-            <div class="location-container">
-                <div class="location-info">
-                    <div class="info-item">
-                        <div class="info-icon">📍</div>
-                        <div class="info-content">
-                            <h3>آدرس</h3>
+            <div class="countdown-item">
+                <span class="countdown-number" id="minutes">45</span>
+                <span class="countdown-label">دقیقه</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="seconds">30</span>
+                <span class="countdown-label">ثانیه</span>
+            </div>
+        </div>
+        
+        <!-- Discount Code Section -->
+        <div class="discount-section fade-in">
+            <div class="discount-title">🎁 کد تخفیف ویژه اولین خریداران</div>
+            <div class="discount-subtitle">برای اولین خریدتان از این کد استفاده کنید</div>
+            <div class="discount-percentage">10% تخفیف</div>
+            <div class="discount-code-box">
+                <div class="discount-code" id="discountCode">FIRST10</div>
+                <button class="copy-code-btn" id="copyCodeBtn">
+                    📋 کپی کد تخفیف
+                </button>
+            </div>
+            <div class="discount-timer">
+                ⏰ این کد تا زمان راه‌اندازی فروشگاه معتبر است
+            </div>
+        </div>
+        
+        <!-- Live Stats Section -->
+        <div class="stats-section fade-in">
+            <div class="stat-card">
+                <div class="stat-icon">👥</div>
+                <span class="stat-number" id="subscribersCount">0</span>
+                <div class="stat-label">ثبت‌نام در خبرنامه</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">👁️</div>
+                <span class="stat-number" id="visitorsCount">0</span>
+                <div class="stat-label">بازدیدکننده امروز</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">📦</div>
+                <span class="stat-number">500+</span>
+                <div class="stat-label">قطعه در انبار</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🚗</div>
+                <span class="stat-number">20+</span>
+                <div class="stat-label">نوع خودرو پشتیبانی</div>
+            </div>
+        </div>
+        
+        <!-- Features -->
+        <div class="features fade-in">
+            <div class="feature-card">
+                <div class="feature-icon">🔧</div>
+                <div class="feature-title">موتور کامل</div>
+                <div class="feature-desc">انواع موتور کامل خودروهای داخلی با گارانتی معتبر</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <div class="feature-title">سیلندر و سرسیلندر</div>
+                <div class="feature-desc">قطعات اصلی و استاندارد با کیفیت بالا و قیمت مناسب</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">✅</div>
+                <div class="feature-title">ضمانت کیفیت</div>
+                <div class="feature-desc">محصولات اصل با گارانتی تعویض و بازگشت وجه</div>
+            </div>
+        </div>
+        
+        <!-- Map Section -->
+        <div class="map-section fade-in">
+            <div class="map-header">
+                <h2 class="map-title">📍 موقعیت فروشگاه</h2>
+                <p class="map-subtitle">به زودی در خدمت شما خواهیم بود</p>
+            </div>
+            <div class="map-container">
+                <div id="map"></div>
+                <div class="map-info">
+                    <!-- Address -->
+                    <div class="map-info-item">
+                        <div class="map-info-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <linearGradient id="locationGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#ff6b35;stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:#ff8c61;stop-opacity:1" />
+                                    </linearGradient>
+                                </defs>
+                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" 
+                                      fill="url(#locationGradient)" 
+                                      stroke="#ff6b35" 
+                                      stroke-width="1.5"/>
+                                <circle cx="12" cy="9" r="3" fill="#fff" opacity="0.9"/>
+                                <circle cx="12" cy="9" r="1.5" fill="#ff6b35"/>
+                            </svg>
+                        </div>
+                        <div class="map-info-content">
+                            <h4>آدرس فروشگاه</h4>
                             <p>البرز، مهرشهر، انتهای کیانمهر، بلوار امام رضا، بین غدیر 8 و 9</p>
                         </div>
                     </div>
-
-                    <div class="info-item">
-                        <div class="info-icon">⏰</div>
-                        <div class="info-content">
-                            <h3>ساعات کاری</h3>
-                            <p>شنبه تا چهارشنبه: 8:00 - 18:00<br>
-                            پنجشنبه: 8:00 - 16:00<br>
-                            جمعه: تعطیل</p>
+                    
+                    <!-- Working Hours -->
+                    <div class="map-info-item">
+                        <div class="map-info-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <linearGradient id="clockGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:#0088cc;stop-opacity:1" />
+                                    </linearGradient>
+                                </defs>
+                                <circle cx="12" cy="12" r="10" 
+                                        stroke="url(#clockGradient)" 
+                                        stroke-width="2" 
+                                        fill="rgba(0, 212, 255, 0.1)"/>
+                                <circle cx="12" cy="12" r="2" fill="#00d4ff"/>
+                                <line x1="12" y1="12" x2="12" y2="7" 
+                                      stroke="#00d4ff" 
+                                      stroke-width="2" 
+                                      stroke-linecap="round">
+                                    <animateTransform 
+                                        attributeName="transform"
+                                        attributeType="XML"
+                                        type="rotate"
+                                        from="0 12 12"
+                                        to="360 12 12"
+                                        dur="4s"
+                                        repeatCount="indefinite"/>
+                                </line>
+                                <line x1="12" y1="12" x2="16" y2="12" 
+                                      stroke="#00d4ff" 
+                                      stroke-width="2" 
+                                      stroke-linecap="round">
+                                    <animateTransform 
+                                        attributeName="transform"
+                                        attributeType="XML"
+                                        type="rotate"
+                                        from="0 12 12"
+                                        to="360 12 12"
+                                        dur="48s"
+                                        repeatCount="indefinite"/>
+                                </line>
+                            </svg>
+                        </div>
+                        <div class="map-info-content">
+                            <h4>ساعات کاری</h4>
+                            <p>شنبه تا پنجشنبه: 9:00 - 18:00</p>
                         </div>
                     </div>
-
-                    <div class="info-item">
-                        <div class="info-icon">📞</div>
-                        <div class="info-content">
-                            <h3>تماس با ما</h3>
-                            <p>
-                                <a href="tel:+989128625637">09128625637</a><br>
-                                <a href="tel:+989936869801">09936869801</a>
-                            </p>
+                    
+                    <!-- Phone -->
+                    <div class="map-info-item">
+                        <div class="map-info-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <linearGradient id="phoneGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#00ff88;stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:#00cc6a;stop-opacity:1" />
+                                    </linearGradient>
+                                </defs>
+                                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" 
+                                      fill="url(#phoneGradient)"/>
+                                <path d="M21 6c0-1.1-.9-2-2-2s-2 .9-2 2 .9 2 2 2 2-.9 2-2z" 
+                                      fill="none" 
+                                      stroke="#ff6b35" 
+                                      stroke-width="1.5" 
+                                      opacity="0.8">
+                                    <animate attributeName="opacity" values="0.3;0.8;0.3" dur="2s" repeatCount="indefinite"/>
+                                    <animateTransform attributeName="transform" type="scale" values="1;1.2;1" dur="2s" repeatCount="indefinite" additive="sum"/>
+                                </path>
+                                <path d="M23 6c0-2.2-1.8-4-4-4s-4 1.8-4 4 1.8 4 4 4 4-1.8 4-4z" 
+                                      fill="none" 
+                                      stroke="#ff6b35" 
+                                      stroke-width="1.5" 
+                                      opacity="0.5">
+                                    <animate attributeName="opacity" values="0.2;0.5;0.2" dur="2s" repeatCount="indefinite" begin="0.3s"/>
+                                    <animateTransform attributeName="transform" type="scale" values="1;1.3;1" dur="2s" repeatCount="indefinite" begin="0.3s" additive="sum"/>
+                                </path>
+                            </svg>
                         </div>
-                    </div>
-
-                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                        <a href="https://maps.google.com/?q=35.793442550068775,50.84555032466878" 
-                           target="_blank" 
-                           class="directions-button" 
-                           style="flex: 1; min-width: 240px;">
-                            <i class="fab fa-google"></i>
-                            مسیریابی با گوگل مپ
-                        </a>
-                        <a href="https://neshan.org/maps/@$35.7935287697598,$50.845786827618014,16z" 
-                           target="_blank" 
-                           class="directions-button neshan-button" 
-                           style="flex: 1; min-width: 240px;">
-                            <i class="fas fa-map-marked-alt"></i>
-                            مسیریابی با نشان
-                        </a>
+                        <div class="map-info-content">
+                            <h4>تماس با ما</h4>
+                            <p>09128625637</p>
+                        </div>
                     </div>
                 </div>
-
-                <div class="map-container">
-                    <div id="map"></div>
+                <div class="navigation-buttons">
+                    <button class="directions-btn google-maps" onclick="openGoogleMaps()">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="35.793442550068775,50.84555032466878"/>
+                        </svg>
+                        مسیریابی با گوگل مپ
+                    </button>
+                    <button class="directions-btn neshan-maps" onclick="openNeshanMaps()">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z"/>
+                        </svg>
+                        مسیریابی با نشان
+                    </button>
                 </div>
             </div>
-        </section>
-
-        <!-- Footer -->
-        <footer class="footer">
+        </div>
+        
+        <!-- Newsletter -->
+        <div class="newsletter fade-in">
+            <form class="newsletter-form" id="newsletterForm">
+                <input 
+                    type="email" 
+                    class="newsletter-input" 
+                    id="emailInput"
+                    name="email"
+                    placeholder="ایمیل خود را وارد کنید..."
+                    required
+                    autocomplete="email"
+                >
+                <button type="submit" class="newsletter-button" id="submitBtn">
+                    مطلع شوید
+                </button>
+            </form>
+            <div class="rate-limit-info" id="rateLimitInfo"></div>
+            <div class="form-message" id="formMessage"></div>
+        </div>
+        
+        <!-- Contact Section -->
+        <div class="contact-section fade-in">
+            <h3 class="contact-title">با ما در ارتباط باشید</h3>
             <div class="social-links">
-                <!-- Instagram -->
-                <a href="https://instagram.com/motoshatel" 
-                   target="_blank"
-                   class="social-link instagram" 
-                   aria-label="Instagram" 
-                   title="اینستاگرام موتوشاتل">
-                    <i class="fab fa-instagram"></i>
-                </a>
-
-                <!-- Telegram -->
-                <a href="https://t.me/motoshatel" 
-                   target="_blank"
-                   class="social-link telegram" 
-                   aria-label="Telegram" 
-                   title="کانال تلگرام">
-                    <i class="fab fa-telegram-plane"></i>
-                </a>
-
-                <!-- WhatsApp -->
-                <a href="https://wa.me/989128625637" 
-                   target="_blank"
-                   class="social-link whatsapp" 
-                   aria-label="WhatsApp" 
-                   title="واتساپ">
-                    <i class="fab fa-whatsapp"></i>
-                </a>
-
                 <!-- Phone -->
-                <a href="tel:+989128625637" 
-                   class="social-link phone" 
-                   aria-label="Phone" 
-                   title="تماس تلفنی">
-                    <i class="fas fa-phone-alt"></i>
+                <a href="tel:+989128625637" class="social-link phone">
+                    <span class="social-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/>
+                        </svg>
+                    </span>
+                    <span class="social-text">09128625637</span>
+                </a>
+                
+                <!-- Instagram -->
+                <a href="https://instagram.com/motoshatel" class="social-link instagram" target="_blank" rel="noopener noreferrer">
+                    <span class="social-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </span>
+                    <span class="social-text">اینستاگرام</span>
+                </a>
+                
+                <!-- Telegram -->
+                <a href="https://t.me/motoshatel" class="social-link telegram" target="_blank" rel="noopener noreferrer">
+                    <span class="social-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                        </svg>
+                    </span>
+                    <span class="social-text">تلگرام</span>
+                </a>
+                
+                <!-- Email -->
+                <a href="mailto:info@motoshatel.com" class="social-link email">
+                    <span class="social-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
+                    </span>
+                    <span class="social-text">ایمیل</span>
                 </a>
             </div>
-
-            <div class="contact-info">
-                <a href="mailto:info@motoshatel.com" class="contact-item">
-                    <i class="fas fa-envelope"></i> info@motoshatel.com
-                </a>
-            </div>
-
-            <div class="copyright">
-                © 2025 MotoShatel. تمامی حقوق محفوظ است.
-            </div>
-        </footer>
-    </div>
-
-    <!-- Discount Modal -->
-    <div class="discount-modal" id="discountModal">
-        <div class="discount-modal-content">
-            <button class="modal-close" id="modalClose">×</button>
-            <div class="modal-icon">🎉</div>
-            <h2 class="modal-title">تبریک!</h2>
-            <p class="modal-description">کد تخفیف 10% ویژه شما آماده است</p>
-            
-            <div class="discount-code-box">
-                <div class="discount-code" id="discountCode">MOTO2024</div>
-                <div class="discount-value">تخفیف 10 درصد</div>
-            </div>
-
-            <button class="copy-button" id="copyButton">
-                📋 کپی کد تخفیف
-            </button>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <p class="footer-text">
+                © ۱۴۰۴ موتوشاتل | تمامی حقوق محفوظ است
+            </p>
         </div>
     </div>
-
-    <!-- WhatsApp Floating Button -->
-    <div class="whatsapp-float">
-        <a href="https://wa.me/989128625637?text=سلام، من از طریق سایت موتوشاتل تماس می‌گیرم" target="_blank" class="whatsapp-button">
-            <i class="fab fa-whatsapp whatsapp-icon"></i>
-        </a>
-        <div class="whatsapp-tooltip">
-            پشتیبانی واتساپ
-        </div>
-    </div>
-
+    
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
+    
     <script>
-        // ============================================
-        // SECURITY
-        // ============================================
-        (function() {
-            'use strict';
-            
-            document.addEventListener('contextmenu', function(e) {
+        // ==================== SECURITY ====================
+        
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            return false;
+        });
+        
+        document.addEventListener('keydown', function(e) {
+            if (e.keyCode === 123 || 
+                (e.ctrlKey && e.shiftKey && e.keyCode === 73) ||
+                (e.ctrlKey && e.shiftKey && e.keyCode === 74) ||
+                (e.ctrlKey && e.keyCode === 85)) {
                 e.preventDefault();
                 return false;
-            }, false);
-
-            document.addEventListener('keydown', function(e) {
-                if (e.keyCode === 123 || 
-                    (e.ctrlKey && e.shiftKey && e.keyCode === 73) ||
-                    (e.ctrlKey && e.shiftKey && e.keyCode === 74) ||
-                    (e.ctrlKey && e.shiftKey && e.keyCode === 67) ||
-                    (e.ctrlKey && e.keyCode === 85) ||
-                    (e.ctrlKey && e.keyCode === 83)) {
-                    e.preventDefault();
-                    return false;
-                }
-            }, false);
-        })();
-
-        // ============================================
-        // ANTI-SPAM SYSTEM
-        // ============================================
-        const STORAGE_KEY = 'motoshatel_registered_emails';
-        const COOKIE_NAME = 'motoshatel_email_registered';
-        const RATE_LIMIT_KEY = 'motoshatel_rate_limit';
-        const FINGERPRINT_KEY = 'motoshatel_fingerprint';
-        const BLOCKED_KEY = 'motoshatel_blocked';
-        const DISCOUNT_CODE_KEY = 'motoshatel_discount_code';
+            }
+        });
         
-        const SPAM_CONFIG = {
-            MAX_ATTEMPTS_PER_HOUR: 3,
-            MAX_ATTEMPTS_PER_DAY: 5,
-            MIN_TIME_BETWEEN_SUBMITS: 10000,
-            MIN_FORM_FILL_TIME: 3000,
-            BLOCK_DURATION: 3600000,
-            PATTERN_CHECK: true
+        // ==================== EMAIL VALIDATION ====================
+        
+        const validDomains = [
+            'gmail.com', 'yahoo.com', 'outlook.com', 'hotmail.com',
+            'icloud.com', 'aol.com', 'protonmail.com', 'mail.com',
+            'zoho.com', 'yandex.com', 'gmx.com', 'fastmail.com',
+            'tutanota.com', 'live.com', 'msn.com', 'me.com',
+            'mac.com', 'inbox.com', 'mail.ru', 'rambler.ru'
+        ];
+        
+        function isValidEmailDomain(email) {
+            const domain = email.split('@')[1];
+            if (!domain) return false;
+            return validDomains.includes(domain.toLowerCase());
+        }
+        
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) return false;
+            return isValidEmailDomain(email);
+        }
+        
+        // ==================== ANTI-SPAM SYSTEM ====================
+        
+        const STORAGE_KEY = 'motoshatel_submitted_emails';
+        const RATE_LIMIT_KEY = 'motoshatel_rate_limit';
+        const SPAM_SCORE_KEY = 'motoshatel_spam_score';
+        
+        const ANTI_SPAM_CONFIG = {
+            MAX_SUBMISSIONS_PER_HOUR: 3,
+            MAX_SUBMISSIONS_PER_DAY: 5,
+            COOLDOWN_MINUTES: 5,
+            SPAM_BLOCK_HOURS: 24,
+            MAX_SPAM_SCORE: 10
         };
-
-        let formLoadTime = Date.now();
-
-        function generateFingerprint() {
-            const canvas = document.createElement('canvas');
-            const ctx = canvas.getContext('2d');
-            ctx.textBaseline = 'top';
-            ctx.font = '14px Arial';
-            ctx.fillText('motoshatel', 2, 2);
-            
-            const fingerprint = {
-                canvas: canvas.toDataURL(),
-                userAgent: navigator.userAgent,
-                language: navigator.language,
-                platform: navigator.platform,
-                screen: `${screen.width}x${screen.height}x${screen.colorDepth}`,
-                timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
-            };
-            
-            const str = JSON.stringify(fingerprint);
-            let hash = 0;
-            for (let i = 0; i < str.length; i++) {
-                const char = str.charCodeAt(i);
-                hash = ((hash << 5) - hash) + char;
-                hash = hash & hash;
-            }
-            
-            return Math.abs(hash).toString(36);
-        }
-
-        const userFingerprint = generateFingerprint();
-
-        function getRateLimitData() {
+        
+        function calculateSpamScore() {
             try {
-                const data = localStorage.getItem(RATE_LIMIT_KEY);
-                return data ? JSON.parse(data) : { hourly: [], daily: [] };
+                const spamData = JSON.parse(localStorage.getItem(SPAM_SCORE_KEY) || '{"score": 0, "lastReset": null}');
+                const now = new Date();
+                const lastReset = spamData.lastReset ? new Date(spamData.lastReset) : null;
+                
+                if (lastReset && (now - lastReset) > (24 * 60 * 60 * 1000)) {
+                    spamData.score = 0;
+                    spamData.lastReset = now.toISOString();
+                    localStorage.setItem(SPAM_SCORE_KEY, JSON.stringify(spamData));
+                }
+                
+                return spamData.score;
             } catch {
-                return { hourly: [], daily: [] };
+                return 0;
             }
         }
-
-        function saveRateLimitData(data) {
-            localStorage.setItem(RATE_LIMIT_KEY, JSON.stringify(data));
-        }
-
-        function checkRateLimit() {
-            const now = Date.now();
-            const data = getRateLimitData();
-            
-            data.hourly = data.hourly.filter(time => now - time < 3600000);
-            data.daily = data.daily.filter(time => now - time < 86400000);
-            
-            if (data.hourly.length >= SPAM_CONFIG.MAX_ATTEMPTS_PER_HOUR) {
-                return { allowed: false, reason: 'hourly_limit' };
+        
+        function increaseSpamScore(points = 1) {
+            try {
+                const spamData = JSON.parse(localStorage.getItem(SPAM_SCORE_KEY) || '{"score": 0, "lastReset": null}');
+                spamData.score += points;
+                spamData.lastReset = spamData.lastReset || new Date().toISOString();
+                localStorage.setItem(SPAM_SCORE_KEY, JSON.stringify(spamData));
+                return spamData.score;
+            } catch {
+                return 0;
             }
-            
-            if (data.daily.length >= SPAM_CONFIG.MAX_ATTEMPTS_PER_DAY) {
-                return { allowed: false, reason: 'daily_limit' };
-            }
-            
-            return { allowed: true };
         }
-
-        function recordAttempt() {
-            const data = getRateLimitData();
-            const now = Date.now();
-            data.hourly.push(now);
-            data.daily.push(now);
-            saveRateLimitData(data);
-        }
-
+        
         function isUserBlocked() {
             try {
-                const blocked = localStorage.getItem(BLOCKED_KEY);
-                if (!blocked) return false;
+                const blockData = JSON.parse(localStorage.getItem('motoshatel_blocked') || 'null');
+                if (!blockData) return false;
                 
-                const blockedData = JSON.parse(blocked);
-                const now = Date.now();
+                const now = new Date();
+                const blockUntil = new Date(blockData.until);
                 
-                if (now < blockedData.until) {
-                    return { blocked: true, remaining: blockedData.until - now };
+                if (now < blockUntil) {
+                    return {
+                        blocked: true,
+                        until: blockUntil,
+                        reason: blockData.reason
+                    };
                 } else {
-                    localStorage.removeItem(BLOCKED_KEY);
+                    localStorage.removeItem('motoshatel_blocked');
                     return false;
                 }
             } catch {
                 return false;
             }
         }
-
+        
         function blockUser(reason) {
-            const blockedData = {
-                fingerprint: userFingerprint,
-                until: Date.now() + SPAM_CONFIG.BLOCK_DURATION,
+            const now = new Date();
+            const blockUntil = new Date(now.getTime() + (ANTI_SPAM_CONFIG.SPAM_BLOCK_HOURS * 60 * 60 * 1000));
+            
+            localStorage.setItem('motoshatel_blocked', JSON.stringify({
                 reason: reason,
-                timestamp: new Date().toISOString()
-            };
-            localStorage.setItem(BLOCKED_KEY, JSON.stringify(blockedData));
+                until: blockUntil.toISOString(),
+                blockedAt: now.toISOString()
+            }));
         }
-
-        function detectSuspiciousPatterns(email) {
-            const patterns = [
-                /^[a-z]+\d{3,}@/i,
-                /^[a-z]{20,}@/i,
-                /(.)\1{4,}/,
-                /^\d+@/,
-                /^(test|demo|fake|spam)\d*@/i
-            ];
-            return patterns.some(pattern => pattern.test(email));
-        }
-
-        function checkTypingSpeed() {
-            const formFillTime = Date.now() - formLoadTime;
-            return formFillTime < SPAM_CONFIG.MIN_FORM_FILL_TIME;
-        }
-
-        function getRegisteredEmails() {
+        
+        function checkRateLimit() {
             try {
-                const emails = localStorage.getItem(STORAGE_KEY);
-                return emails ? JSON.parse(emails) : [];
-            } catch {
+                const rateLimitData = JSON.parse(localStorage.getItem(RATE_LIMIT_KEY) || '[]');
+                const now = new Date();
+                
+                const recentSubmissions = rateLimitData.filter(item => {
+                    const submissionTime = new Date(item.timestamp);
+                    return (now - submissionTime) < (24 * 60 * 60 * 1000);
+                });
+                
+                if (recentSubmissions.length > 0) {
+                    const lastSubmission = new Date(recentSubmissions[recentSubmissions.length - 1].timestamp);
+                    const minutesSinceLastSubmission = (now - lastSubmission) / (1000 * 60);
+                    
+                    if (minutesSinceLastSubmission < ANTI_SPAM_CONFIG.COOLDOWN_MINUTES) {
+                        const remainingMinutes = Math.ceil(ANTI_SPAM_CONFIG.COOLDOWN_MINUTES - minutesSinceLastSubmission);
+                        return {
+                            allowed: false,
+                            reason: 'cooldown',
+                            remainingMinutes: remainingMinutes
+                        };
+                    }
+                }
+                
+                const lastHourSubmissions = recentSubmissions.filter(item => {
+                    const submissionTime = new Date(item.timestamp);
+                    return (now - submissionTime) < (60 * 60 * 1000);
+                });
+                
+                if (lastHourSubmissions.length >= ANTI_SPAM_CONFIG.MAX_SUBMISSIONS_PER_HOUR) {
+                    increaseSpamScore(3);
+                    return {
+                        allowed: false,
+                        reason: 'hourly_limit',
+                        count: lastHourSubmissions.length
+                    };
+                }
+                
+                if (recentSubmissions.length >= ANTI_SPAM_CONFIG.MAX_SUBMISSIONS_PER_DAY) {
+                    increaseSpamScore(5);
+                    blockUser('تعداد ثبت‌نام بیش از حد مجاز');
+                    return {
+                        allowed: false,
+                        reason: 'daily_limit',
+                        count: recentSubmissions.length
+                    };
+                }
+                
+                localStorage.setItem(RATE_LIMIT_KEY, JSON.stringify(recentSubmissions));
+                
+                return { allowed: true };
+                
+            } catch (error) {
+                return { allowed: true };
+            }
+        }
+        
+        function recordSubmission() {
+            try {
+                const rateLimitData = JSON.parse(localStorage.getItem(RATE_LIMIT_KEY) || '[]');
+                rateLimitData.push({
+                    timestamp: new Date().toISOString()
+                });
+                localStorage.setItem(RATE_LIMIT_KEY, JSON.stringify(rateLimitData));
+            } catch (error) {
+                console.error('Error recording submission:', error);
+            }
+        }
+        
+        function saveEmailToStorage(email) {
+            try {
+                const submittedEmails = getSubmittedEmails();
+                submittedEmails.push({
+                    email: email.toLowerCase(),
+                    timestamp: new Date().toISOString()
+                });
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(submittedEmails));
+                return true;
+            } catch (error) {
+                return false;
+            }
+        }
+        
+        function getSubmittedEmails() {
+            try {
+                const stored = localStorage.getItem(STORAGE_KEY);
+                return stored ? JSON.parse(stored) : [];
+            } catch (error) {
                 return [];
             }
         }
-
-        function saveEmail(email) {
-            try {
-                const emails = getRegisteredEmails();
-                const emailData = {
-                    email: email.toLowerCase(),
-                    timestamp: new Date().toISOString(),
-                    fingerprint: userFingerprint
-                };
-                
-                emails.push(emailData);
-                localStorage.setItem(STORAGE_KEY, JSON.stringify(emails));
-                setCookie(COOKIE_NAME, email.toLowerCase(), 365);
-                
-                return true;
-            } catch {
-                return false;
-            }
+        
+        function isEmailAlreadySubmitted(email) {
+            const submittedEmails = getSubmittedEmails();
+            return submittedEmails.some(item => item.email === email.toLowerCase());
         }
-
-        function isEmailRegistered(email) {
-            const emails = getRegisteredEmails();
-            const normalizedEmail = email.toLowerCase();
+        
+        function showRateLimitTimer(minutes) {
+            const rateLimitInfo = document.getElementById('rateLimitInfo');
+            rateLimitInfo.textContent = `لطفاً ${minutes} دقیقه صبر کنید تا بتوانید دوباره ثبت‌نام کنید.`;
+            rateLimitInfo.classList.add('show');
             
-            const existsInStorage = emails.some(item => item.email === normalizedEmail);
-            const existsInCookie = getCookie(COOKIE_NAME) === normalizedEmail;
-            
-            return existsInStorage || existsInCookie;
+            setTimeout(() => {
+                rateLimitInfo.classList.remove('show');
+            }, 5000);
         }
-
-        function setCookie(name, value, days) {
-            const expires = new Date();
-            expires.setTime(expires.getTime() + (days * 24 * 60 * 60 * 1000));
-            document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/;SameSite=Strict`;
-        }
-
-        function getCookie(name) {
-            const nameEQ = name + "=";
-            const ca = document.cookie.split(';');
-            for(let i = 0; i < ca.length; i++) {
-                let c = ca[i];
-                while (c.charAt(0) === ' ') c = c.substring(1, c.length);
-                if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
-            }
-            return null;
-        }
-
-        function validateEmail(email) {
-            const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-            if (!emailRegex.test(email)) return false;
-
-            const disposableEmailDomains = [
-                'tempmail.com', 'throwaway.email', '10minutemail.com',
-                'guerrillamail.com', 'mailinator.com', 'temp-mail.org'
-            ];
-
-            const domain = email.split('@')[1].toLowerCase();
-            if (disposableEmailDomains.some(d => domain.includes(d))) return false;
-            if (email.length > 254 || email.length < 6) return false;
-            if (email.includes('..')) return false;
-
-            return true;
-        }
-
-        // ============================================
-        // DISCOUNT CODE
-        // ============================================
-        function generateDiscountCode() {
-            const prefix = 'MOTO';
-            const random = Math.random().toString(36).substring(2, 8).toUpperCase();
-            return `${prefix}${random}`;
-        }
-
-        function getDiscountCode(email) {
-            const saved = localStorage.getItem(DISCOUNT_CODE_KEY);
-            if (saved) {
-                const data = JSON.parse(saved);
-                if (data.email === email.toLowerCase()) {
-                    return data.code;
-                }
-            }
-            
-            const code = generateDiscountCode();
-            const discountData = {
-                email: email.toLowerCase(),
-                code: code,
-                timestamp: new Date().toISOString(),
-                used: false
-            };
-            
-            localStorage.setItem(DISCOUNT_CODE_KEY, JSON.stringify(discountData));
-            return code;
-        }
-
-        function showDiscountModal(email) {
-            const code = getDiscountCode(email);
-            document.getElementById('discountCode').textContent = code;
-            document.getElementById('discountModal').classList.add('show');
-        }
-
-        function hideDiscountModal() {
-            document.getElementById('discountModal').classList.remove('show');
-        }
-
-        // ============================================
-        // FORMSPARK
-        // ============================================
-        const FORMSPARK_FORM_ID = "3EyfrF7Z4";
+        
+        // ==================== FORMSPARK INTEGRATION ====================
+        
+        const FORMSPARK_FORM_ID = '3EyfrF7Z4';
         const FORMSPARK_ACTION_URL = `https://submit-form.com/${FORMSPARK_FORM_ID}`;
-
-        async function submitToFormspark(email, discountCode) {
+        
+        const newsletterForm = document.getElementById('newsletterForm');
+        const emailInput = document.getElementById('emailInput');
+        const submitBtn = document.getElementById('submitBtn');
+        const formMessage = document.getElementById('formMessage');
+        
+        function showMessage(message, type) {
+            formMessage.textContent = message;
+            formMessage.className = `form-message ${type}`;
+            setTimeout(() => {
+                formMessage.className = 'form-message';
+            }, 5000);
+        }
+        
+        function setLoading(isLoading) {
+            if (isLoading) {
+                submitBtn.disabled = true;
+                submitBtn.classList.add('loading');
+                submitBtn.textContent = '';
+            } else {
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('loading');
+                submitBtn.textContent = 'مطلع شوید';
+            }
+        }
+        
+        newsletterForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const email = emailInput.value.trim();
+            emailInput.classList.remove('error', 'success', 'warning');
+            formMessage.className = 'form-message';
+            
+            const blockStatus = isUserBlocked();
+            if (blockStatus) {
+                const hoursRemaining = Math.ceil((blockStatus.until - new Date()) / (1000 * 60 * 60));
+                emailInput.classList.add('error');
+                showMessage(`🚫 شما به دلیل فعالیت مشکوک برای ${hoursRemaining} ساعت بلاک شده‌اید.`, 'error');
+                return;
+            }
+            
+            const spamScore = calculateSpamScore();
+            if (spamScore >= ANTI_SPAM_CONFIG.MAX_SPAM_SCORE) {
+                blockUser('امتیاز اسپم بالا');
+                emailInput.classList.add('error');
+                showMessage('🚫 فعالیت مشکوک شناسایی شد. دسترسی شما مسدود شده است.', 'error');
+                return;
+            }
+            
+            if (!isValidEmail(email)) {
+                increaseSpamScore(1);
+                emailInput.classList.add('error');
+                showMessage('لطفاً یک ایمیل معتبر از سرویس‌های مجاز وارد کنید (مثل Gmail, Yahoo, Outlook)', 'error');
+                return;
+            }
+            
+            if (isEmailAlreadySubmitted(email)) {
+                emailInput.classList.add('warning');
+                showMessage('⚠️ این ایمیل قبلاً ثبت شده است! شما در لیست خبرنامه هستید.', 'warning');
+                return;
+            }
+            
+            const rateLimitCheck = checkRateLimit();
+            if (!rateLimitCheck.allowed) {
+                emailInput.classList.add('error');
+                
+                if (rateLimitCheck.reason === 'cooldown') {
+                    showMessage(`⏱️ لطفاً ${rateLimitCheck.remainingMinutes} دقیقه صبر کنید.`, 'warning');
+                    showRateLimitTimer(rateLimitCheck.remainingMinutes);
+                } else if (rateLimitCheck.reason === 'hourly_limit') {
+                    showMessage('🚫 شما بیش از حد مجاز ثبت‌نام کرده‌اید. لطفاً یک ساعت دیگر تلاش کنید.', 'error');
+                } else if (rateLimitCheck.reason === 'daily_limit') {
+                    showMessage('🚫 تعداد ثبت‌نام شما از حد مجاز روزانه گذشته است.', 'error');
+                }
+                return;
+            }
+            
+            setLoading(true);
+            
             try {
                 const response = await fetch(FORMSPARK_ACTION_URL, {
-                    method: "POST",
+                    method: 'POST',
                     headers: {
-                        "Content-Type": "application/json",
-                        "Accept": "application/json",
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
                     },
                     body: JSON.stringify({
                         email: email,
-                        discountCode: discountCode,
                         timestamp: new Date().toISOString(),
-                        fingerprint: userFingerprint,
-                        source: "MotoShatel Coming Soon",
+                        source: 'MotoShatel Coming Soon Page',
+                        discountCode: 'FIRST10',
                         _email: {
-                            subject: "کد تخفیف ویژه موتوشاتل - " + discountCode
+                            subject: 'ثبت ایمیل جدید - موتوشاتل'
                         }
                     }),
                 });
-
+                
                 const data = await response.json();
                 
                 if (response.ok) {
-                    return { success: true, data: data };
-                } else {
-                    throw new Error(data.message || 'Submission failed');
-                }
-            } catch (error) {
-                return { success: false, error: error.message };
-            }
-        }
-
-        // ============================================
-        // FORM HANDLING
-        // ============================================
-        function initNewsletterForm() {
-            const form = document.getElementById('newsletterForm');
-            const emailInput = document.getElementById('emailInput');
-            const honeypot = document.getElementById('honeypot');
-            const submitBtn = document.getElementById('submitBtn');
-            const buttonText = document.getElementById('buttonText');
-            const successMessage = document.getElementById('successMessage');
-            const warningMessage = document.getElementById('warningMessage');
-            const errorMessage = document.getElementById('errorMessage');
-            const blockedMessage = document.getElementById('blockedMessage');
-
-            emailInput.addEventListener('focus', function() {
-                if (formLoadTime === 0) {
-                    formLoadTime = Date.now();
-                }
-            }, { once: true });
-
-            emailInput.addEventListener('input', function() {
-                successMessage.classList.remove('show');
-                warningMessage.classList.remove('show');
-                errorMessage.classList.remove('show');
-                blockedMessage.classList.remove('show');
-                emailInput.classList.remove('error', 'success', 'warning');
-            });
-
-            form.addEventListener('submit', async function(e) {
-                e.preventDefault();
-
-                const email = emailInput.value.trim();
-
-                successMessage.classList.remove('show');
-                warningMessage.classList.remove('show');
-                errorMessage.classList.remove('show');
-                blockedMessage.classList.remove('show');
-                emailInput.classList.remove('error', 'success', 'warning');
-
-                if (honeypot.value !== '') {
-                    blockUser('honeypot_filled');
-                    blockedMessage.classList.add('show');
-                    return;
-                }
-
-                const blockStatus = isUserBlocked();
-                if (blockStatus) {
-                    blockedMessage.classList.add('show');
-                    submitBtn.disabled = true;
-                    return;
-                }
-
-                const rateCheck = checkRateLimit();
-                if (!rateCheck.allowed) {
-                    blockedMessage.textContent = '⚠ شما بیش از حد مجاز درخواست ارسال کرده‌اید.';
-                    blockedMessage.classList.add('show');
-                    blockUser('rate_limit_exceeded');
-                    return;
-                }
-
-                if (checkTypingSpeed()) {
-                    blockUser('fast_typing');
-                    blockedMessage.classList.add('show');
-                    return;
-                }
-
-                if (SPAM_CONFIG.PATTERN_CHECK && detectSuspiciousPatterns(email)) {
-                    emailInput.classList.add('error');
-                    errorMessage.classList.add('show');
-                    recordAttempt();
-                    return;
-                }
-
-                if (isEmailRegistered(email)) {
-                    emailInput.classList.add('warning');
-                    warningMessage.classList.add('show');
-                    return;
-                }
-
-                if (!validateEmail(email)) {
-                    emailInput.classList.add('error');
-                    errorMessage.classList.add('show');
-                    recordAttempt();
-                    return;
-                }
-
-                submitBtn.disabled = true;
-                buttonText.innerHTML = '<span class="loading-ring"></span>';
-
-                recordAttempt();
-
-                const discountCode = getDiscountCode(email);
-                const result = await submitToFormspark(email, discountCode);
-
-                if (result.success) {
-                    saveEmail(email);
+                    saveEmailToStorage(email);
+                    recordSubmission();
+                    updateSubscribersCount();
                     
                     emailInput.classList.add('success');
-                    emailInput.value = '';
-                    buttonText.textContent = '✓ ثبت شد';
-                    successMessage.classList.add('show');
-
+                    showMessage('✅ ایمیل شما با موفقیت ثبت شد! کد تخفیف FIRST10 را فراموش نکنید.', 'success');
+                    newsletterForm.reset();
                     setTimeout(() => {
-                        showDiscountModal(email);
-                    }, 1000);
-
-                    formLoadTime = 0;
-
-                    setTimeout(() => {
-                        buttonText.textContent = 'مرا باخبر کنید';
-                        submitBtn.disabled = false;
-                        successMessage.classList.remove('show');
                         emailInput.classList.remove('success');
-                    }, 5000);
+                    }, 3000);
                 } else {
-                    emailInput.classList.add('error');
-                    buttonText.textContent = 'مرا باخبر کنید';
-                    submitBtn.disabled = false;
-                    errorMessage.classList.add('show');
+                    throw new Error(data.message || 'خطا در ارسال');
                 }
+                
+            } catch (error) {
+                increaseSpamScore(2);
+                emailInput.classList.add('error');
+                showMessage('❌ متأسفانه خطایی رخ داد. لطفاً دوباره تلاش کنید.', 'error');
+            } finally {
+                setLoading(false);
+            }
+        });
+        
+        emailInput.addEventListener('input', function() {
+            const email = this.value.trim();
+            this.classList.remove('error', 'success', 'warning');
+            
+            if (email && !isValidEmail(email)) {
+                this.classList.add('error');
+            } else if (email && isValidEmail(email)) {
+                if (isEmailAlreadySubmitted(email)) {
+                    this.classList.add('warning');
+                } else {
+                    this.classList.add('success');
+                }
+            }
+        });
+        
+        // ==================== DISCOUNT CODE COPY ====================
+        
+        const copyCodeBtn = document.getElementById('copyCodeBtn');
+        const discountCode = document.getElementById('discountCode');
+        
+        copyCodeBtn.addEventListener('click', function() {
+            const code = discountCode.textContent;
+            
+            navigator.clipboard.writeText(code).then(() => {
+                copyCodeBtn.textContent = '✅ کپی شد!';
+                copyCodeBtn.classList.add('copied');
+                
+                setTimeout(() => {
+                    copyCodeBtn.textContent = '📋 کپی کد تخفیف';
+                    copyCodeBtn.classList.remove('copied');
+                }, 2000);
+            }).catch(() => {
+                const textArea = document.createElement('textarea');
+                textArea.value = code;
+                textArea.style.position = 'fixed';
+                textArea.style.left = '-999999px';
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                
+                copyCodeBtn.textContent = '✅ کپی شد!';
+                copyCodeBtn.classList.add('copied');
+                
+                setTimeout(() => {
+                    copyCodeBtn.textContent = '📋 کپی کد تخفیف';
+                    copyCodeBtn.classList.remove('copied');
+                }, 2000);
             });
+        });
+        
+        // ==================== LIVE STATS ====================
+        
+        function updateSubscribersCount() {
+            const count = getSubmittedEmails().length;
+            animateNumber('subscribersCount', count);
         }
-
-        // ============================================
-        // MAP INITIALIZATION
-        // ============================================
+        
+        function updateVisitorsCount() {
+            const visitorsKey = 'motoshatel_visitors';
+            let visitors = parseInt(localStorage.getItem(visitorsKey) || '0');
+            
+            const lastVisit = localStorage.getItem('motoshatel_last_visit');
+            const now = new Date().toDateString();
+            
+            if (lastVisit !== now) {
+                visitors++;
+                localStorage.setItem(visitorsKey, visitors);
+                localStorage.setItem('motoshatel_last_visit', now);
+            }
+            
+            animateNumber('visitorsCount', visitors);
+        }
+        
+        function animateNumber(elementId, targetNumber) {
+            const element = document.getElementById(elementId);
+            const duration = 1000;
+            const start = 0;
+            const startTime = performance.now();
+            
+            function update(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const current = Math.floor(progress * targetNumber);
+                
+                element.textContent = current;
+                
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                }
+            }
+            
+            requestAnimationFrame(update);
+        }
+        
+        // ==================== MAP INITIALIZATION ====================
+        
+        let map;
+        
         function initMap() {
-            const lat = 35.793442550068775;
-            const lng = 50.84555032466878;
-
-            const map = L.map('map').setView([lat, lng], 16);
-
+            const shopLocation = [35.793442550068775, 50.84555032466878];
+            
+            map = L.map('map').setView(shopLocation, 16);
+            
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-                maxZoom: 19,
-                minZoom: 10
+                attribution: '© OpenStreetMap contributors',
+                maxZoom: 19
             }).addTo(map);
-
+            
             const customIcon = L.divIcon({
                 className: 'custom-marker',
-                html: `
-                    <div style="
-                        font-size: 2.5rem; 
-                        text-align: center;
-                        filter: drop-shadow(0 0 10px rgba(255, 107, 53, 0.8));
-                        animation: bounce 2s infinite;
-                    ">
-                        ⚙️
-                    </div>
-                `,
-                iconSize: [50, 50],
-                iconAnchor: [25, 50]
+                html: '<div style="background: linear-gradient(135deg, #ff6b35 0%, #00d4ff 100%); width: 40px; height: 40px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); border: 3px solid white; box-shadow: 0 5px 20px rgba(255, 107, 53, 0.6);"><div style="transform: rotate(45deg); margin-top: 8px; font-size: 20px; text-align: center;">🏪</div></div>',
+                iconSize: [40, 40],
+                iconAnchor: [20, 40]
             });
-
-            const marker = L.marker([lat, lng], { icon: customIcon }).addTo(map);
-
-            const popupContent = `
-                <div style="
-                    font-family: Vazirmatn, sans-serif;
-                    text-align: center;
-                    padding: 10px;
-                    min-width: 220px;
-                ">
-                    <div style="
-                        font-size: 1.4rem;
-                        font-weight: bold;
-                        color: #ff6b35;
-                        margin-bottom: 8px;
-                    ">
-                        ⚙️ موتوشاتل
-                    </div>
-                    <div style="
-                        color: #666;
-                        margin-bottom: 12px;
-                        font-size: 0.95rem;
-                        line-height: 1.5;
-                    ">
-                        فروشگاه تخصصی قطعات موتور<br>
-                        سیلندر و سرسیلندر
-                    </div>
-                    <div style="
-                        display: flex;
-                        gap: 8px;
-                        justify-content: center;
-                        flex-direction: column;
-                    ">
-                        <a href="https://maps.google.com/?q=${lat},${lng}" 
-                           target="_blank"
-                           style="
-                               background: linear-gradient(135deg, #4285F4, #34A853);
-                               color: white;
-                               padding: 10px 16px;
-                               border-radius: 25px;
-                               text-decoration: none;
-                               font-weight: bold;
-                               font-size: 0.9rem;
-                               display: inline-block;
-                               transition: all 0.3s ease;
-                           "
-                           onmouseover="this.style.transform='scale(1.05)'"
-                           onmouseout="this.style.transform='scale(1)'">
-                            <i class="fab fa-google" style="margin-left: 5px;"></i>
-                            مسیریابی با گوگل مپ
-                        </a>
-                        <a href="https://neshan.org/maps/@$35.7935287697598,$50.845786827618014,16z" 
-                           target="_blank"
-                           style="
-                               background: linear-gradient(135deg, #ff6b35, #00d4ff);
-                               color: white;
-                               padding: 10px 16px;
-                               border-radius: 25px;
-                               text-decoration: none;
-                               font-weight: bold;
-                               font-size: 0.9rem;
-                               display: inline-block;
-                               transition: all 0.3s ease;
-                           "
-                           onmouseover="this.style.transform='scale(1.05)'"
-                           onmouseout="this.style.transform='scale(1)'">
-                            <i class="fas fa-map-marked-alt" style="margin-left: 5px;"></i>
-                            مسیریابی با نشان
-                        </a>
-                    </div>
+            
+            const marker = L.marker(shopLocation, { icon: customIcon }).addTo(map);
+            
+            marker.bindPopup(`
+                <div class="custom-popup">
+                    <h3>🏪 موتوشاتل</h3>
+                    <p>📍 البرز، مهرشهر، انتهای کیانمهر، بلوار امام رضا، بین غدیر 8 و 9</p>
+                    <p>📞 ۰۹۱۲-۳۴۵-۶۷۸۹</p>
+                    <p>🕐 شنبه تا پنجشنبه: 9:00 - 18:00</p>
                 </div>
-            `;
-
-            marker.bindPopup(popupContent, {
-                maxWidth: 350,
-                className: 'custom-popup'
-            }).openPopup();
-
-            setTimeout(() => {
-                marker.openPopup();
-            }, 1000);
+            `).openPopup();
         }
-
-        // ============================================
-        // DISCOUNT MODAL CONTROLS
-        // ============================================
-        function initDiscountModal() {
-            const modal = document.getElementById('discountModal');
-            const closeBtn = document.getElementById('modalClose');
-            const copyBtn = document.getElementById('copyButton');
-
-            closeBtn.addEventListener('click', hideDiscountModal);
-
-            modal.addEventListener('click', function(e) {
-                if (e.target === modal) {
-                    hideDiscountModal();
-                }
-            });
-
-            copyBtn.addEventListener('click', function() {
-                const code = document.getElementById('discountCode').textContent;
-                
-                if (navigator.clipboard) {
-                    navigator.clipboard.writeText(code).then(() => {
-                        copyBtn.textContent = '✓ کپی شد!';
-                        copyBtn.classList.add('copied');
-                        
-                        setTimeout(() => {
-                            copyBtn.textContent = '📋 کپی کد تخفیف';
-                            copyBtn.classList.remove('copied');
-                        }, 2000);
-                    });
-                } else {
-                    const textarea = document.createElement('textarea');
-                    textarea.value = code;
-                    textarea.style.position = 'fixed';
-                    textarea.style.opacity = '0';
-                    document.body.appendChild(textarea);
-                    textarea.select();
-                    document.execCommand('copy');
-                    document.body.removeChild(textarea);
-                    
-                    copyBtn.textContent = '✓ کپی شد!';
-                    copyBtn.classList.add('copied');
-                    
-                    setTimeout(() => {
-                        copyBtn.textContent = '📋 کپی کد تخفیف';
-                        copyBtn.classList.remove('copied');
-                    }, 2000);
-                }
-            });
+        
+        function openGoogleMaps() {
+            const destination = '35.793442550068775,50.84555032466878';
+            window.open(`https://www.google.com/maps/dir/?api=1&destination=${destination}`, '_blank');
         }
-
-// ============================================
-// COUNTDOWN TIMER - با تاریخ ثابت
-// ============================================
-function initCountdown() {
-    // 🔥 تاریخ راه‌اندازی رو اینجا مشخص کن
-    // فرمت: سال، ماه (0=ژانویه، 11=دسامبر)، روز، ساعت، دقیقه
-    const launchDate = new Date(2025, 10, 22, 12, 0, 0); // 15 فوریه 2025، ساعت 12:00
-    
-    // یا می‌تونی از فرمت ISO استفاده کنی:
-    // const launchDate = new Date('2025-02-15T12:00:00');
-
-    function updateCountdown() {
-        const now = new Date().getTime();
-        const distance = launchDate.getTime() - now;
-
-        if (distance < 0) {
-            clearInterval(countdownInterval);
-            document.getElementById('countdown').innerHTML = '<h2 class="coming-soon-primary">راه‌اندازی شد!</h2>';
-            return;
+        
+        function openNeshanMaps() {
+            const lat = 35.793442550068775;
+            const lng = 50.84555032466878;
+            window.open(`https://neshan.org/maps/@${lat},${lng},15z`, '_blank');
         }
-
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        document.getElementById('days').textContent = String(days).padStart(2, '0');
-        document.getElementById('hours').textContent = String(hours).padStart(2, '0');
-        document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
-        document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
-    }
-
-    updateCountdown();
-    const countdownInterval = setInterval(updateCountdown, 1000);
-}
-        // ============================================
-        // PARTICLE SYSTEM
-        // ============================================
+        
+        // ==================== PARTICLE SYSTEM ====================
+        
         function createParticles() {
             const particlesContainer = document.getElementById('particles');
             const particleCount = 30;
-
+            
             for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
                 particle.className = 'particle';
-                
-                const size = Math.random() * 4 + 2;
-                particle.style.width = size + 'px';
-                particle.style.height = size + 'px';
                 particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
                 
-                const duration = Math.random() * 20 + 15;
-                particle.style.animationDuration = duration + 's';
-                particle.style.animationDelay = Math.random() * 5 + 's';
+                if (Math.random() > 0.5) {
+                    particle.style.background = 'var(--primary-orange)';
+                }
                 
                 particlesContainer.appendChild(particle);
             }
         }
+        
+        // ==================== COUNTDOWN TIMER - FIXED ====================
+        
+// ==================== ⚙️ تنظیمات تایمر شمارش معکوس ⚙️ ====================
 
-        // ============================================
-        // INITIALIZE ALL
-        // ============================================
-        document.addEventListener('DOMContentLoaded', function() {
-            initCountdown();
-            createParticles();
-            initNewsletterForm();
-            initMap();
-            initDiscountModal();
-            
-            console.log('🚀 موتوشاتل - سطح 1 کامل!');
-            console.log('✅ نقشه: کرج (35.79, 50.84)');
-            console.log('✅ کد تخفیف اختصاصی');
-            console.log('✅ واتساپ مستقیم');
-            console.log('✅ مسیریابی گوگل + نشان');
-            console.log('✅ آیکون‌های شبکه‌های اجتماعی');
-        });
+// 📅 تاریخ و ساعت راه‌اندازی را اینجا تنظیم کنید:
+const TIMER_SETTINGS = {
+    // تاریخ میلادی (سال، ماه، روز، ساعت، دقیقه، ثانیه)
+    // توجه: ماه از 0 شروع می‌شود! (0=ژانویه، 1=فوریه، 2=مارس، ... 11=دسامبر)
+    
+    year: 2025,        // سال میلادی
+    month: 10,          // ماه میلادی (0-11) - مارس=2
+    day: 20,           // روز
+    hour: 0,           // ساعت (0-23)
+    minute: 0,         // دقیقه (0-59)
+    second: 0          // ثانیه (0-59)
+};
 
-        window.clearAllEmails = function() {
-            if (confirm('آیا مطمئن هستید؟')) {
-                localStorage.clear();
-                location.reload();
-            }
+// 💡 راهنمای تبدیل تاریخ شمسی به میلادی (سال 1404):
+// ┌─────────────────┬──────────────────┬───────────────────────────────────┐
+// │  تاریخ شمسی     │  تاریخ میلادی    │  تنظیمات                          │
+// ├─────────────────┼──────────────────┼───────────────────────────────────┤
+// │ 1 فروردین 1404  │ 21 مارس 2025    │ year: 2025, month: 2, day: 21    │
+// │ 15 فروردین 1404 │ 4 آوریل 2025    │ year: 2025, month: 3, day: 4     │
+// │ 1 اردیبهشت 1404 │ 21 آوریل 2025   │ year: 2025, month: 3, day: 21    │
+// │ 1 خرداد 1404     │ 22 می 2025      │ year: 2025, month: 4, day: 22    │
+// │ 1 تیر 1404       │ 22 ژوئن 2025    │ year: 2025, month: 5, day: 22    │
+// │ 1 مرداد 1404     │ 23 جولای 2025   │ year: 2025, month: 6, day: 23    │
+// │ 1 شهریور 1404    │ 23 آگوست 2025   │ year: 2025, month: 7, day: 23    │
+// │ 1 مهر 1404       │ 23 سپتامبر 2025 │ year: 2025, month: 8, day: 23    │
+// │ 1 آبان 1404      │ 23 اکتبر 2025   │ year: 2025, month: 9, day: 23    │
+// │ 1 آذر 1404       │ 22 نوامبر 2025  │ year: 2025, month: 10, day: 22   │
+// │ 1 دی 1404        │ 22 دسامبر 2025  │ year: 2025, month: 11, day: 22   │
+// └─────────────────┴──────────────────┴───────────────────────────────────┘
+
+// 🔄 برای ریست تایمر، این خط را uncomment کنید، یکبار رفرش کنید، سپس دوباره comment کنید:
+ localStorage.removeItem('motoshatel_launch_date');
+
+// ==================== COUNTDOWN TIMER - کد اصلی ====================
+
+function updateCountdown() {
+    const LAUNCH_DATE_KEY = 'motoshatel_launch_date';
+    let launchDate;
+    
+    // بررسی اینکه آیا تاریخ قبلاً ذخیره شده یا نه
+    const storedLaunchDate = localStorage.getItem(LAUNCH_DATE_KEY);
+    
+    if (storedLaunchDate) {
+        // استفاده از تاریخ ذخیره شده
+        launchDate = new Date(storedLaunchDate);
+    } else {
+        // ایجاد تاریخ جدید از تنظیمات بالا
+        launchDate = new Date(
+            TIMER_SETTINGS.year,
+            TIMER_SETTINGS.month,
+            TIMER_SETTINGS.day,
+            TIMER_SETTINGS.hour,
+            TIMER_SETTINGS.minute,
+            TIMER_SETTINGS.second
+        );
+        
+        // ذخیره تاریخ برای بار بعد
+        localStorage.setItem(LAUNCH_DATE_KEY, launchDate.toISOString());
+    }
+    
+    // تابع بروزرسانی شمارش معکوس
+    function update() {
+        const currentTime = new Date().getTime();
+        const distance = launchDate - currentTime;
+        
+        // اگر زمان تمام شد
+        if (distance < 0) {
+            document.getElementById('days').textContent = '0';
+            document.getElementById('hours').textContent = '0';
+            document.getElementById('minutes').textContent = '0';
+            document.getElementById('seconds').textContent = '0';
+            return;
+        }
+        
+        // محاسبه روز، ساعت، دقیقه و ثانیه
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        
+        // نمایش در صفحه
+        document.getElementById('days').textContent = days;
+        document.getElementById('hours').textContent = hours;
+        document.getElementById('minutes').textContent = minutes;
+        document.getElementById('seconds').textContent = seconds;
+    }
+    
+    // اجرای اولیه
+    update();
+    
+    // بروزرسانی هر ثانیه
+    setInterval(update, 1000);
+}
+        
+        // ==================== FADE-IN ANIMATION ====================
+        
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
         };
+        
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.fade-in').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+        
+        // ==================== INITIALIZATION ====================
+        
+        window.addEventListener('load', function() {
+            createParticles();
+            updateCountdown();
+            initMap();
+            updateSubscribersCount();
+            updateVisitorsCount();
+            
+            const blockStatus = isUserBlocked();
+            if (blockStatus) {
+                submitBtn.disabled = true;
+                const hoursRemaining = Math.ceil((blockStatus.until - new Date()) / (1000 * 60 * 60));
+                showMessage(`🚫 شما برای ${hoursRemaining} ساعت دیگر بلاک هستید.`, 'error');
+            }
+        });
     </script>
 </body>
 </html>
